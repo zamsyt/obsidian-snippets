@@ -1,4 +1,4 @@
-/* Custom page preview v1.1 */
+/* Custom page preview v1.2 */
 
 .callout[data-callout="page-preview"] {
   --callout-icon: lucide-inspect;
@@ -44,10 +44,11 @@
   padding: 0; }
 .hover-popover .markdown-preview-sizer {
   min-height: 0 !important; }
+:root .hover-popover {
+  min-height: var(--size-4-12); }
 :root .hover-popover > .markdown-embed {
   height: auto;
-  max-height: var(--popover-height);
-}
+  max-height: var(--popover-height); }
 .hover-popover .callout[data-callout="page-preview"] {
   margin: 0; }
 
