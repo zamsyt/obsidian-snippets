@@ -42,10 +42,12 @@
   display: none; }
 :root:root:root .hover-popover .markdown-preview-view {
   padding: 0; }
-/*.hover-popover .markdown-preview-sizer {
+.hover-popover .markdown-preview-sizer {
   min-height: 0 !important; }
 :root .hover-popover > .markdown-embed {
-  height: auto; }*/
+  height: auto;
+  max-height: var(--popover-height);
+}
 .hover-popover .callout[data-callout="page-preview"] {
   margin: 0; }
 
