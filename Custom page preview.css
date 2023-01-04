@@ -1,4 +1,4 @@
-/* Custom page preview v1.0 */
+/* Custom page preview v1.1 */
 
 .callout[data-callout="page-preview"] {
   --callout-icon: lucide-inspect;
@@ -26,7 +26,7 @@
   margin: 1em; }
 
 /* image */
-.callout[data-callout="page-preview"] .callout-content > :last-child {
+.callout[data-callout="page-preview"] .callout-content > :last-child:not(:first-child) {
   margin: 0;
   margin-left: auto;
   flex-basis: 45%;
