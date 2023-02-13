@@ -1,0 +1,31 @@
+/* Multicolumn Notes v0.1.0 */
+.markdown-preview-view div:has(> hr) + * > hr,
+.markdown-source-view :is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr) + * {
+  break-after: column; }
+
+.mod-header,
+.frontmatter-container,
+.cm-line:has(.cm-hmd-frontmatter),
+.cm-line:has(.cm-hmd-frontmatter) + .cm-line:has(br:only-child) {
+  column-span: all; }
+
+/* Live preview */
+.cm-contentContainer > *:has(:is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr)) {
+  column-count: 2; }
+.cm-contentContainer > *:has(:is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr) ~ :is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr)) {
+  column-count: 3; }
+.cm-contentContainer > *:has(:is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr) ~ :is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr) ~ :is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr)) {
+  column-count: 4; }
+.cm-contentContainer > *:has(:is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr) ~ :is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr) ~ :is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr) ~ :is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr)) {
+  column-count: 5; }
+
+/* Reading view
+   Requires Contextual Typography */
+.markdown-preview-sizer:has(.el-hr + .el-hr) {
+  column-count: 2; }
+.markdown-preview-sizer:has(.el-hr + .el-hr ~ .el-hr + .el-hr) {
+  column-count: 3; }
+.markdown-preview-sizer:has(.el-hr + .el-hr ~ .el-hr + .el-hr ~ .el-hr + .el-hr) {
+  column-count: 4; }
+.markdown-preview-sizer:has(.el-hr + .el-hr ~ .el-hr + .el-hr ~ .el-hr + .el-hr ~ .el-hr + .el-hr) {
+  column-count: 5; }
