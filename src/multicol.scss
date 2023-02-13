@@ -1,0 +1,34 @@
+/* Multicolumn Notes v0.1.0 */
+$max-columns: 5;
+
+.markdown-preview-view div:has(> hr) +*> hr,
+.markdown-source-view :is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr) + * {
+	break-after: column;
+}
+
+.mod-header,
+.frontmatter-container,
+.cm-line:has(.cm-hmd-frontmatter),
+.cm-line:has(.cm-hmd-frontmatter) + .cm-line:has(br:only-child) {
+	column-span: all;
+}
+
+/* Live preview */
+$hr: ":is(.HyperMD-hr, .hr)";
+$hrs: "#{$hr} + #{$hr}";
+@for $i from 2 through $max-columns {
+	.cm-contentContainer > *:has(#{$hrs}) {
+		column-count: $i;
+	}
+	$hrs: "#{$hrs} ~ #{$hr} + #{$hr}";
+}
+
+/* Reading view
+   Requires Contextual Typography */
+$hrs: ".el-hr + .el-hr";
+@for $i from 2 through $max-columns {
+	.markdown-preview-sizer:has(#{$hrs}) {
+		column-count: $i;
+	}
+	$hrs: $hrs + "~ .el-hr + .el-hr"
+}
