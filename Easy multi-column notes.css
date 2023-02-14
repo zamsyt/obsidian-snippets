@@ -1,4 +1,4 @@
-/* Multicolumn Notes v0.2.0 */
+/* Multicolumn Notes v0.3.0 */
 .markdown-preview-view div:has(> hr) + * > hr,
 .markdown-source-view :is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr) + * {
   break-after: column; }
@@ -19,6 +19,11 @@
 .hr + .hr:not(:has(+ .cm-active)),
 .el-hr:has(+ .el-hr), .el-hr + .el-hr {
   --hr-color: transparent; }
+
+/* Disable Readable line length for multi-column notes */
+.markdown-source-view:has(:is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr) + .cm-line:not(:last-child)),
+.markdown-preview-view:has(.el-hr + .el-hr + :not(.mod-footer)) {
+  --file-line-width: 100%; }
 
 /* Live preview */
 .cm-contentContainer > *:has(:is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr) + .cm-line:not(:last-child)) {
