@@ -1,4 +1,4 @@
-/* Multicolumn Notes v0.1.1 */
+/* Multicolumn Notes v0.2.0 */
 $max-columns: 5;
 
 .markdown-preview-view div:has(> hr) +*> hr,
@@ -11,6 +11,19 @@ $max-columns: 5;
 .cm-line:has(.cm-hmd-frontmatter),
 .cm-line:has(.cm-hmd-frontmatter) + .cm-line:has(br:only-child) {
 	column-span: all;
+}
+
+/* Add vertical lines */
+.cm-contentContainer > *,
+.markdown-preview-sizer {
+  column-rule: solid var(--hr-thickness) var(--hr-color);
+}
+
+/* Hide double <hr>s */
+.hr:has(+ .hr):not(:has(+*+ .cm-active)),
+.hr + .hr:not(:has(+ .cm-active)),
+.el-hr:has(+ .el-hr), .el-hr + .el-hr {
+  --hr-color: transparent;
 }
 
 /* Live preview */
