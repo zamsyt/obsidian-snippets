@@ -1,4 +1,4 @@
-/* Multicolumn Notes v0.1.0 */
+/* Multicolumn Notes v0.1.1 */
 .markdown-preview-view div:has(> hr) + * > hr,
 .markdown-source-view :is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr) + * {
   break-after: column; }
@@ -10,22 +10,22 @@
   column-span: all; }
 
 /* Live preview */
-.cm-contentContainer > *:has(:is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr)) {
+.cm-contentContainer > *:has(:is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr) + .cm-line:not(:last-child)) {
   column-count: 2; }
-.cm-contentContainer > *:has(:is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr) ~ :is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr)) {
+.cm-contentContainer > *:has(:is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr) ~ :is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr) + .cm-line:not(:last-child)) {
   column-count: 3; }
-.cm-contentContainer > *:has(:is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr) ~ :is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr) ~ :is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr)) {
+.cm-contentContainer > *:has(:is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr) ~ :is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr) ~ :is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr) + .cm-line:not(:last-child)) {
   column-count: 4; }
-.cm-contentContainer > *:has(:is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr) ~ :is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr) ~ :is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr) ~ :is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr)) {
+.cm-contentContainer > *:has(:is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr) ~ :is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr) ~ :is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr) ~ :is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr) + .cm-line:not(:last-child)) {
   column-count: 5; }
 
 /* Reading view
    Requires Contextual Typography */
-.markdown-preview-sizer:has(.el-hr + .el-hr) {
+.markdown-preview-sizer:has(.el-hr + .el-hr + :not(.mod-footer)) {
   column-count: 2; }
-.markdown-preview-sizer:has(.el-hr + .el-hr ~ .el-hr + .el-hr) {
+.markdown-preview-sizer:has(.el-hr + .el-hr ~ .el-hr + .el-hr + :not(.mod-footer)) {
   column-count: 3; }
-.markdown-preview-sizer:has(.el-hr + .el-hr ~ .el-hr + .el-hr ~ .el-hr + .el-hr) {
+.markdown-preview-sizer:has(.el-hr + .el-hr ~ .el-hr + .el-hr ~ .el-hr + .el-hr + :not(.mod-footer)) {
   column-count: 4; }
-.markdown-preview-sizer:has(.el-hr + .el-hr ~ .el-hr + .el-hr ~ .el-hr + .el-hr ~ .el-hr + .el-hr) {
+.markdown-preview-sizer:has(.el-hr + .el-hr ~ .el-hr + .el-hr ~ .el-hr + .el-hr ~ .el-hr + .el-hr + :not(.mod-footer)) {
   column-count: 5; }
