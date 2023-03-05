@@ -1,4 +1,10 @@
-/* Enable dark mode printing v0.1.0 */
+/* Enable dark mode printing v0.2.0
+   github.com/zamsyt */
+
+.theme-dark:has(> .print) {
+  box-shadow: 0 0 0 100vh var(--background-primary); /*Fill the end of the last page*/
+}
+
 .theme-dark .print .markdown-preview-view {
   /* Blockquotes */
   --blockquote-border-color: var(--interactive-accent);
