@@ -1,4 +1,4 @@
-/* Custom page preview v1.4
+/* Custom page preview v1.4 - ignorepos patch
    github.com/zamsyt */
 
 .callout[data-callout="page-preview"] {
@@ -10,7 +10,7 @@
 /* Editing */
 .callout[data-callout="page-preview"] .callout-title {
   padding: var(--callout-padding); }
-.markdown-source-view > * > * > * > * > * > * > .callout[data-callout="page-preview"] .callout-content {
+.markdown-source-view .callout[data-callout="page-preview"] .callout-content {
   border: 1px solid var(--background-modifier-border);
   border-radius: var(--callout-radius); }
 
@@ -39,7 +39,7 @@
   width: 100%; }
 
 /* Fill the whole window */
-.hover-popover .markdown-preview-sizer > div > :not(.callout[data-callout="page-preview"]) {
+.hover-popover .markdown-preview-sizer > div:not(:has(.callout[data-callout="page-preview"])) {
   display: none; }
 :root:root:root .hover-popover .markdown-preview-view {
   padding: 0; }
@@ -66,5 +66,5 @@
   padding: var(--file-margins); }
 
 /* Hide in reading view */
-.markdown-reading-view > * > * > * > .callout[data-callout="page-preview"] {
+.markdown-reading-view .callout[data-callout="page-preview"] {
   display: none; }
