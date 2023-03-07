@@ -1,5 +1,5 @@
 *.css
-!Custom page preview.css
+!Custom page preview (ignore position).css
 !Note color scheme.css
 !Enable dark mode printing.css
 !Force light mode printing.css
