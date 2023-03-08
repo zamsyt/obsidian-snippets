@@ -1,4 +1,4 @@
-/* Custom page preview v1.4 - ignorepos patch
+/* Custom page preview v1.4 - ignorepos patch 2
    github.com/zamsyt */
 
 .callout[data-callout="page-preview"] {
@@ -60,7 +60,7 @@
 
 /* Revert to normal preview when there's no Page preview callout.
    Requires installer v1.1.9 */
-.hover-popover .markdown-preview-sizer:not(:has(.callout[data-callout="page-preview"])) > div > * {
+.hover-popover .markdown-preview-sizer:not(:has(.callout[data-callout="page-preview"])) > div {
   display: block; }
 :root:root .hover-popover .markdown-preview-view:not(:has(.callout[data-callout="page-preview"])) {
   padding: var(--file-margins); }
