@@ -1,5 +1,5 @@
 /* Multicolumn Notes v0.4.0 */
-$max-columns: 5;
+$max-columns: 6;
 
 .markdown-preview-view div:has(> hr) +*> hr,
 .markdown-source-view :is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr) + * {
@@ -41,7 +41,7 @@ $max-columns: 5;
 $hr: ":is(.HyperMD-hr, .hr)";
 $hrs: "#{$hr} + #{$hr}";
 @for $i from 2 through $max-columns {
-	.cm-contentContainer > *:has(#{$hrs} + .cm-line:not(:last-child)) {
+	.cm-contentContainer > :has(#{$hrs} + .cm-line:not(:last-child)) {
 		column-count: $i;
 	}
 	$hrs: "#{$hrs} ~ #{$hr} + #{$hr}";
