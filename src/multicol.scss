@@ -1,4 +1,4 @@
-/* Multicolumn Notes v0.3.0 */
+/* Multicolumn Notes v0.4.0 */
 $max-columns: 5;
 
 .markdown-preview-view div:has(> hr) +*> hr,
@@ -26,9 +26,14 @@ $max-columns: 5;
   --hr-color: transparent;
 }
 
+.markdown-preview-view div:has(> hr) + * > hr,
+.markdown-preview-view div:has(+ * > hr) > hr {
+  margin: 0;
+}
+
 /* Disable Readable line length for multi-column notes */
 .markdown-source-view:has(:is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr) + .cm-line:not(:last-child)),
-.markdown-preview-view:has(.el-hr + .el-hr + :not(.mod-footer)) {
+.markdown-preview-view:has(> * > .el-hr + .el-hr + :not(.mod-footer)) {
   --file-line-width: 100%;
 }
 
@@ -46,7 +51,7 @@ $hrs: "#{$hr} + #{$hr}";
    Requires Contextual Typography */
 $hrs: ".el-hr + .el-hr";
 @for $i from 2 through $max-columns {
-	.markdown-preview-sizer:has(#{$hrs} + :not(.mod-footer)) {
+	.markdown-preview-sizer:has(> #{$hrs} + :not(.mod-footer)) {
 		column-count: $i;
 	}
 	$hrs: $hrs + "~ .el-hr + .el-hr"
