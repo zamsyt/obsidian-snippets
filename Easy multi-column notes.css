@@ -1,0 +1,56 @@
+/* Multicolumn Notes v0.4.0
+   github.com/zamsyt */
+.markdown-preview-view div:has(> hr) + * > hr,
+.markdown-source-view :is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr) + * {
+  break-after: column; }
+
+.mod-header,
+.frontmatter-container,
+.cm-line:has(.cm-hmd-frontmatter),
+.cm-line:has(.cm-hmd-frontmatter) + .cm-line:has(br:only-child) {
+  column-span: all; }
+
+/* Add vertical lines */
+.cm-contentContainer > *,
+.markdown-preview-sizer {
+  column-rule: solid var(--hr-thickness) var(--hr-color); }
+
+/* Hide double <hr>s */
+.hr:has(+ .hr):not(:has(+ * + .cm-active)),
+.hr + .hr:not(:has(+ .cm-active)),
+.el-hr:has(+ .el-hr), .el-hr + .el-hr {
+  --hr-color: transparent; }
+
+.markdown-preview-view div:has(> hr) + * > hr,
+.markdown-preview-view div:has(+ * > hr) > hr {
+  margin: 0; }
+
+/* Disable Readable line length for multi-column notes */
+.markdown-source-view:has(:is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr) + .cm-line:not(:last-child)),
+.markdown-preview-view:has(> * > .el-hr + .el-hr + :not(.mod-footer)) {
+  --file-line-width: 100%; }
+
+/* Live preview */
+.cm-contentContainer > :has(:is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr) + .cm-line:not(:last-child)) {
+  column-count: 2; }
+.cm-contentContainer > :has(:is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr) ~ :is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr) + .cm-line:not(:last-child)) {
+  column-count: 3; }
+.cm-contentContainer > :has(:is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr) ~ :is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr) ~ :is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr) + .cm-line:not(:last-child)) {
+  column-count: 4; }
+.cm-contentContainer > :has(:is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr) ~ :is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr) ~ :is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr) ~ :is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr) + .cm-line:not(:last-child)) {
+  column-count: 5; }
+.cm-contentContainer > :has(:is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr) ~ :is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr) ~ :is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr) ~ :is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr) ~ :is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr) + .cm-line:not(:last-child)) {
+  column-count: 6; }
+
+/* Reading view
+   Requires Contextual Typography */
+.markdown-preview-sizer:has(> .el-hr + .el-hr + :not(.mod-footer)) {
+  column-count: 2; }
+.markdown-preview-sizer:has(> .el-hr + .el-hr ~ .el-hr + .el-hr + :not(.mod-footer)) {
+  column-count: 3; }
+.markdown-preview-sizer:has(> .el-hr + .el-hr ~ .el-hr + .el-hr ~ .el-hr + .el-hr + :not(.mod-footer)) {
+  column-count: 4; }
+.markdown-preview-sizer:has(> .el-hr + .el-hr ~ .el-hr + .el-hr ~ .el-hr + .el-hr ~ .el-hr + .el-hr + :not(.mod-footer)) {
+  column-count: 5; }
+.markdown-preview-sizer:has(> .el-hr + .el-hr ~ .el-hr + .el-hr ~ .el-hr + .el-hr ~ .el-hr + .el-hr ~ .el-hr + .el-hr + :not(.mod-footer)) {
+  column-count: 6; }
