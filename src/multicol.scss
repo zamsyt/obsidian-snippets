@@ -1,9 +1,10 @@
-/* Multicolumn Notes v0.4.0
+/* Multicolumn Notes v0.5.0
    github.com/zamsyt */
 $max-columns: 6;
 
 .markdown-preview-view div:has(> hr) +*> hr,
-.markdown-source-view :is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr) + * {
+.markdown-source-view :is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr) + *,
+.callout-content hr + hr {
 	break-after: column;
 }
 
@@ -16,36 +17,40 @@ $max-columns: 6;
 
 /* Add vertical lines */
 .cm-contentContainer > *,
-.markdown-preview-sizer {
+.markdown-preview-sizer,
+.callout-content {
   column-rule: solid var(--hr-thickness) var(--hr-color);
 }
 
 /* Hide double <hr>s */
 .hr:has(+ .hr):not(:has(+*+ .cm-active)),
 .hr + .hr:not(:has(+ .cm-active)),
-.el-hr:has(+ .el-hr), .el-hr + .el-hr {
+.el-hr:has(+ .el-hr), .el-hr + .el-hr,
+hr:has(+ hr), hr + hr {
   --hr-color: transparent;
 }
 
 .markdown-preview-view div:has(> hr) + * > hr,
-.markdown-preview-view div:has(+ * > hr) > hr {
+.markdown-preview-view div:has(+ * > hr) > hr,
+.markdown-preview-view hr + hr,
+.markdown-preview-view hr:has(+ hr) {
   margin: 0;
 }
 
 /* Disable Readable line length for multi-column notes */
-.markdown-source-view:has(:is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr) + .cm-line:not(:last-child)),
+.markdown-source-view:has(:is(.HyperMD-hr:not(.HyperMD-quote), .hr) + :is(.HyperMD-hr, .hr) + .cm-line:not(:last-child)),
 .markdown-preview-view:has(> * > .el-hr + .el-hr + :not(.mod-footer)) {
   --file-line-width: 100%;
 }
 
 /* Live preview */
-$hr: ":is(.HyperMD-hr, .hr)";
-$hrs: "#{$hr} + #{$hr}";
+$hrX2: ":is(.HyperMD-hr:not(.HyperMD-quote), .hr) + :is(.HyperMD-hr, .hr)";
+$hrs: $hrX2;
 @for $i from 2 through $max-columns {
 	.cm-contentContainer > :has(#{$hrs} + .cm-line:not(:last-child)) {
 		column-count: $i;
 	}
-	$hrs: "#{$hrs} ~ #{$hr} + #{$hr}";
+	$hrs: "#{$hrs} ~ #{$hrX2}";
 }
 
 /* Reading view
@@ -56,4 +61,13 @@ $hrs: ".el-hr + .el-hr";
 		column-count: $i;
 	}
 	$hrs: $hrs + "~ .el-hr + .el-hr"
+}
+
+/* Callouts */
+$hrs: "hr + hr";
+@for $i from 2 through $max-columns {
+	.callout-content:has(> #{$hrs}:not(:last-child)) {
+		column-count: $i;
+	}
+	$hrs: $hrs + "~ hr + hr"
 }
