@@ -1,9 +1,9 @@
-/* Multicolumn Notes v0.5.0
+/* Multicolumn Notes v0.5.1
    github.com/zamsyt */
 $max-columns: 6;
 
 .markdown-preview-view div:has(> hr) +*> hr,
-.markdown-source-view :is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr) + *,
+.markdown-source-view :is(.HyperMD-hr:not(.HyperMD-quote), .hr) + :is(.HyperMD-hr, .hr) + *,
 .callout-content hr + hr {
 	break-after: column;
 }
