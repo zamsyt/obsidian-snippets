@@ -8,5 +8,4 @@
 
 ## [Easy multi-column notes](../../wiki/Easy-multi-column-notes)
 
-[Easy multi-column notes demo](screenshots/Easy-multi-column-notes-demo.mp4)
-
+https://user-images.githubusercontent.com/102934832/230377504-a1c40c6e-5f06-4cf0-b160-a88e9c83adb9.mp4
