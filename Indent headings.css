@@ -1,0 +1,39 @@
+/* Indent headings v0.1.0
+   github.com/zamsyt */
+@counter-style indent {
+  system: additive;
+  additive-symbols: 1 "⠀⠀"; /*Modify this string to adjust indent depth (Default: U+2800 x2)*/
+  suffix: "";
+  fallback: empty;
+}
+
+@counter-style empty {
+  system: cyclic;
+  symbols: "";
+}
+
+div:has(> h1), .HyperMD-header-1 { counter-reset: heading-level 0; }
+div:has(> h2), .HyperMD-header-2 { counter-reset: heading-level 1; }
+div:has(> h3), .HyperMD-header-3 { counter-reset: heading-level 2; }
+div:has(> h4), .HyperMD-header-4 { counter-reset: heading-level 3; }
+div:has(> h5), .HyperMD-header-5 { counter-reset: heading-level 4; }
+div:has(> h6), .HyperMD-header-6 { counter-reset: heading-level 5; }
+
+.markdown-preview-view > * > div::before, .cm-line::before {
+  content: counter(heading-level, indent);
+  font-size: var(--font-text-size);
+  font-weight: normal;
+}
+
+.markdown-preview-view > * > div,
+:root:root .cm-line /*overwrite `.markdown-source-view.mod-cm6 .cm-content > *`*/ {
+  display: flex;
+}
+
+.markdown-preview-view > * > div > * {
+  min-width: 0; /*fix overflow*/
+}
+
+.cm-line::before {
+  flex-shrink: 0;
+}
