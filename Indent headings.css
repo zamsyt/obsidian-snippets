@@ -1,4 +1,4 @@
-/* Indent headings v0.1.0
+/* Indent headings v0.1.1
    github.com/zamsyt */
 @counter-style indent {
   system: additive;
@@ -26,7 +26,7 @@ div:has(> h6), .HyperMD-header-6 { counter-reset: heading-level 5; }
 }
 
 .markdown-preview-view > * > div,
-:root:root .cm-line /*overwrite `.markdown-source-view.mod-cm6 .cm-content > *`*/ {
+:root .cm-line:not(:has(> br:only-child)) /*overwrite `.markdown-source-view.mod-cm6 .cm-content > *`*/ {
   display: flex;
 }
 
