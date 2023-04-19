@@ -1,0 +1,32 @@
+/* Indent headings v0.2.0
+   github.com/zamsyt */
+:root:root .cm-content > div, .markdown-preview-view > * > div {
+  margin-left: calc((var(--heading-level) - 1) * 20px) !important;
+}
+
+$max-headings: 10;
+
+@for $i from 1 through 6 {
+  %heading-#{$i} {
+    --heading-level: #{$i};
+  }
+
+  .HyperMD-header-#{$i}, div:has(> h#{$i}) {
+    --heading-level: #{$i} !important;
+  }
+}
+
+$rv-header: "div:has(> [data-heading]) ~";
+$cm-header: ".HyperMD-header ~";
+$rv-headers: "";
+$cm-headers: "";
+@for $i from 1 through $max-headings {
+  @for $j from 1 through 6 {
+    #{$rv-headers} div:has(> h#{$j}) ~ *,
+    #{$cm-headers} .HyperMD-header-#{$j} ~ * {
+      @extend %heading-#{$j};
+    }
+  }
+  $rv-headers: $rv-headers + $rv-header;
+  $cm-headers: $cm-headers + $cm-header;
+}
