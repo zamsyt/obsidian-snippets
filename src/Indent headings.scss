@@ -18,7 +18,7 @@ $max-headings: 10;
 
 $rv-headers: "";
 $cm-headers: "";
-@for $_ from 1 through $max-headings {
+@for $_ from 0 to $max-headings {
   @for $i from 1 through 6 {
     #{$rv-headers} div:has(> h#{$i}) ~ *,
     #{$cm-headers} .HyperMD-header-#{$i} ~ * {
