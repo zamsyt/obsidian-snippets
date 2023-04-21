@@ -16,17 +16,15 @@ $max-headings: 10;
   }
 }
 
-$rv-header: "div:has(> [data-heading]) ~";
-$cm-header: ".HyperMD-header ~";
 $rv-headers: "";
 $cm-headers: "";
-@for $i from 1 through $max-headings {
-  @for $j from 1 through 6 {
-    #{$rv-headers} div:has(> h#{$j}) ~ *,
-    #{$cm-headers} .HyperMD-header-#{$j} ~ * {
-      @extend %heading-#{$j};
+@for $_ from 1 through $max-headings {
+  @for $i from 1 through 6 {
+    #{$rv-headers} div:has(> h#{$i}) ~ *,
+    #{$cm-headers} .HyperMD-header-#{$i} ~ * {
+      @extend %heading-#{$i};
     }
   }
-  $rv-headers: $rv-headers + $rv-header;
-  $cm-headers: $cm-headers + $cm-header;
+  $rv-headers: $rv-headers + "div:has(> [data-heading]) ~";
+  $cm-headers: $cm-headers + ".HyperMD-header ~";
 }
