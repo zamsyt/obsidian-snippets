@@ -1,7 +1,10 @@
-/* Indent headings v0.2.0
+/* Indent headings v0.2.1
    github.com/zamsyt */
 :root:root .cm-content > div, .markdown-preview-view > * > div {
-  margin-left: calc((var(--heading-level) - 1) * 20px) !important; }
+  margin-left: calc(max(0, var(--heading-level) - 1) * 20px) !important; }
+
+.markdown-embed {
+  --heading-level: 0; }
 
 div:has(> [data-heading]) ~ div:has(> [data-heading]) ~ div:has(> [data-heading]) ~ div:has(> [data-heading]) ~ div:has(> [data-heading]) ~ div:has(> [data-heading]) ~ div:has(> [data-heading]) ~ div:has(> [data-heading]) ~ div:has(> [data-heading]) ~ div:has(> h1) ~ *,
 .HyperMD-header ~ .HyperMD-header ~ .HyperMD-header ~ .HyperMD-header ~ .HyperMD-header ~ .HyperMD-header ~ .HyperMD-header ~ .HyperMD-header ~ .HyperMD-header ~ .HyperMD-header-1 ~ *, div:has(> [data-heading]) ~ div:has(> [data-heading]) ~ div:has(> [data-heading]) ~ div:has(> [data-heading]) ~ div:has(> [data-heading]) ~ div:has(> [data-heading]) ~ div:has(> [data-heading]) ~ div:has(> [data-heading]) ~ div:has(> h1) ~ *,
