@@ -1,4 +1,4 @@
-/* Indent headings v0.2.1
+/* Indent headings v0.2.2
    github.com/zamsyt */
 :root:root .cm-content > div, .markdown-preview-view > * > div {
   margin-left: calc(max(0, var(--heading-level) - 1) * 20px) !important;
@@ -6,7 +6,7 @@
 
 $max-headings: 10;
 
-.markdown-embed {
+.markdown-embed-content {
   --heading-level: 0;
 }
 
