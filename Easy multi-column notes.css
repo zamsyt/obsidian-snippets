@@ -1,4 +1,4 @@
-/* Multicolumn Notes v0.5.1
+/* Multicolumn Notes v0.5.2
    github.com/zamsyt */
 .markdown-preview-view div:has(> hr) + * > hr,
 .markdown-source-view :is(.HyperMD-hr:not(.HyperMD-quote), .hr) + :is(.HyperMD-hr, .hr) + *,
@@ -71,3 +71,14 @@ hr:has(+ hr), hr + hr {
   column-count: 5; }
 .callout-content:has(> hr + hr ~ hr + hr ~ hr + hr ~ hr + hr ~ hr + hr:not(:last-child)) {
   column-count: 6; }
+
+/* Make first elements of columns have consistent top margins */
+.canvas-node-content > * > .markdown-preview-view div:has(> hr) + div:has(> hr) + div > :first-child,
+.inline-embed .markdown-embed-content .callout-content hr + hr + p {
+  margin-top: 0; }
+
+/* Fix list bullet alignment */
+.markdown-rendered .list-bullet {
+  float: none;
+  left: -1em;
+  margin-left: 0; }
