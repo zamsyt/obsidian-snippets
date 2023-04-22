@@ -1,4 +1,4 @@
-/* Multicolumn Notes v0.5.1
+/* Multicolumn Notes v0.5.2-dev
    github.com/zamsyt */
 $max-columns: 6;
 
@@ -70,4 +70,15 @@ $hrs: "hr + hr";
 		column-count: $i;
 	}
 	$hrs: $hrs + "~ hr + hr"
+}
+
+
+/* Make first elements of columns have consistent top margins */
+// app.css: `.canvas-node-content.markdown-embed > .markdown-embed-content > .markdown-preview-view .markdown-preview-pusher + div > *:first-child`
+.canvas-node-content > * > .markdown-preview-view div:has(> hr) + div:has(> hr) + div > :first-child,
+// app.css: `.inline-embed .markdown-embed-content p:first-child { margin-top: 0; }`
+// Surely this is not intentional? (this targets ALL top-level paragraphs since they're all under their own divs)
+// Well, to make this consistent in embedded callouts:
+.inline-embed .markdown-embed-content .callout-content hr + hr + p {
+  margin-top: 0;
 }
