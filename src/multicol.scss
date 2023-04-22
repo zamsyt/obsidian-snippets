@@ -82,3 +82,18 @@ $hrs: "hr + hr";
 .inline-embed .markdown-embed-content .callout-content hr + hr + p {
   margin-top: 0;
 }
+
+/* Fix list bullet alignment */
+// app.css:
+// ```
+// .markdown-rendered .list-bullet {
+//    float: left;
+//    margin-left: -1em;
+// }
+// ```
+// Looks like Chromium doesn't like this combination of columns, float and absolute positioning. Here's a replacement:
+.markdown-rendered .list-bullet {
+  float: none;
+  left: -1em;
+  margin-left: 0;
+}
