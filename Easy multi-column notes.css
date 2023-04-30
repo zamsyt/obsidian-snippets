@@ -1,4 +1,4 @@
-/* Multicolumn Notes v0.5.2
+/* Multicolumn Notes v0.5.3
    github.com/zamsyt */
 .markdown-preview-view div:has(> hr) + * > hr,
 .markdown-source-view :is(.HyperMD-hr:not(.HyperMD-quote), .hr) + :is(.HyperMD-hr, .hr) + *,
@@ -76,6 +76,10 @@ hr:has(+ hr), hr + hr {
 .canvas-node-content > * > .markdown-preview-view div:has(> hr) + div:has(> hr) + div > :first-child,
 .inline-embed .markdown-embed-content .callout-content hr + hr + p {
   margin-top: 0; }
+
+/* Fix embed excess height */
+.markdown-embed .markdown-preview-sizer {
+  min-height: 0 !important; }
 
 /* Fix list bullet alignment */
 .markdown-rendered .list-bullet {
