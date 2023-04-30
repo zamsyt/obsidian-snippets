@@ -1,4 +1,4 @@
-/* Multicolumn Notes v0.5.2
+/* Multicolumn Notes v0.5.3
    github.com/zamsyt */
 $max-columns: 6;
 
@@ -82,6 +82,10 @@ $hrs: "hr + hr";
 .inline-embed .markdown-embed-content .callout-content hr + hr + p {
   margin-top: 0;
 }
+
+/* Fix embed excess height */
+.markdown-embed .markdown-preview-sizer {
+	min-height: 0 !important; }
 
 /* Fix list bullet alignment */
 // app.css:
