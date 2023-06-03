@@ -1,0 +1,194 @@
+/* Dark PDF export v0.3.0
+   github.com/zamsyt */
+
+@media print {
+  :root body {
+    /* Blockquotes */
+    --blockquote-border-color: var(--interactive-accent);
+    /* Callouts */
+    --callout-blend-mode: var(--highlight-mix-blend-mode);
+    --callout-bug: var(--color-red-rgb);
+    --callout-default: var(--color-blue-rgb);
+    --callout-error: var(--color-red-rgb);
+    --callout-example: var(--color-purple-rgb);
+    --callout-fail: var(--color-red-rgb);
+    --callout-important: var(--color-cyan-rgb);
+    --callout-info: var(--color-blue-rgb);
+    --callout-question: var(--color-yellow-rgb);
+    --callout-success: var(--color-green-rgb);
+    --callout-summary: var(--color-cyan-rgb);
+    --callout-tip: var(--color-cyan-rgb);
+    --callout-todo: var(--color-blue-rgb);
+    --callout-warning: var(--color-orange-rgb);
+    /* Checkboxes */
+    --checkbox-marker-color: var(--background-primary);
+    --checkbox-color: var(--interactive-accent);
+    --checkbox-color-hover: var(--interactive-accent-hover);
+    --checkbox-border-color: var(--text-faint);
+    --checkbox-border-color-hover: var(--text-muted);
+    --checklist-done-color: var(--text-muted);
+    /* Code */
+    --code-background: var(--background-primary-alt);
+    --code-normal: var(--text-muted);
+    --code-comment: var(--text-faint);
+    --code-function: var(--color-yellow);
+    --code-important: var(--color-orange);
+    --code-keyword: var(--color-pink);
+    --code-operator: var(--color-red);
+    --code-property: var(--color-cyan);
+    --code-punctuation: var(--text-muted);
+    --code-string: var(--color-green);
+    --code-tag: var(--color-red);
+    --code-value: var(--color-purple);
+    /* Embeds */
+    --embed-border-left: 2px solid var(--interactive-accent);
+    /* Blocks */
+    --embed-block-shadow-hover: 0 0 0 1px var(--background-modifier-border),
+    inset 0 0 0 1px var(--background-modifier-border);
+    /* Headings */
+    --heading-formatting: var(--text-faint);
+    /* Horizontal rules */
+    --hr-color: var(--background-modifier-border);
+    /* Icons */
+    --icon-color: var(--text-muted);
+    --icon-color-hover: var(--text-muted);
+    --icon-color-active: var(--text-accent);
+    --icon-color-focused: var(--text-normal);
+    /* Indentation guide */
+    --indentation-guide-color: rgba(var(--mono-rgb-100), 0.12);
+    --indentation-guide-color-active: rgba(var(--mono-rgb-100), 0.3);
+    /* Links */
+    --link-color: var(--text-accent);
+    --link-color-hover: var(--text-accent-hover);
+    --link-external-color: var(--text-accent);
+    --link-external-color-hover: var(--text-accent-hover);
+    --link-unresolved-color: var(--text-accent);
+    --link-unresolved-decoration-color: hsla(var(--interactive-accent-hsl), 0.3);
+    /* Lists */
+    --list-marker-color: var(--text-faint);
+    --list-marker-color-hover: var(--text-muted);
+    --list-marker-color-collapsed: var(--text-accent);
+    /* Search */
+    --search-clear-button-color: var(--text-muted);
+    --search-icon-color: var(--text-muted);
+    --search-result-background: var(--background-primary);
+    /* Sliders */
+    --slider-thumb-border-color: var(--background-modifier-border-hover);
+    --slider-track-background: var(--background-modifier-border);
+    /* Swatch for color inputs */
+    --swatch-shadow: inset 0 0 0 1px rgba(var(--mono-rgb-100), 0.15);
+    /* Tables */
+    --table-border-color: var(--background-modifier-border);
+    --table-header-border-color: var(--table-border-color);
+    --table-header-color: var(--text-normal);
+    /* Tags */
+    --tag-color: var(--text-accent);
+    --tag-color-hover: var(--text-accent);
+    --tag-background: hsla(var(--interactive-accent-hsl), 0.1);
+    --tag-background-hover: hsla(var(--interactive-accent-hsl), 0.2);
+    --tag-border-color: hsla(var(--interactive-accent-hsl), 0.15);
+    --tag-border-color-hover: hsla(var(--interactive-accent-hsl), 0.15);
+    /* Workspace */
+    --workspace-background-translucent: rgba(var(--mono-rgb-0), 0.6);
+    /* Backgrounds */
+    --background-primary: var(--color-base-00);
+    --background-primary-alt: var(--color-base-10);
+    --background-secondary: var(--color-base-20);
+    --background-modifier-hover: rgba(var(--mono-rgb-100), 0.075);
+    --background-modifier-active-hover: hsla(var(--interactive-accent-hsl), 0.15);
+    --background-modifier-border: var(--color-base-30);
+    --background-modifier-border-hover: var(--color-base-35);
+    --background-modifier-border-focus: var(--color-base-40);
+    --background-modifier-error-rgb: var(--color-red-rgb);
+    --background-modifier-error: var(--color-red);
+    --background-modifier-error-hover: var(--color-red);
+    --background-modifier-success-rgb: var(--color-green-rgb);
+    --background-modifier-success: var(--color-green);
+    /* Inputs */
+    --background-modifier-form-field: var(--color-base-00);
+    /* Text */
+    --text-normal: var(--color-base-100);
+    --text-muted: var(--color-base-70);
+    --text-faint: var(--color-base-50);
+    --text-error: var(--color-red);
+    --text-success: var(--color-green);
+    --text-selection: hsla(var(--color-accent-hsl), 0.2);
+    --text-accent: var(--color-accent);
+    --text-accent-hover: var(--color-accent-2);
+    --interactive-normal: var(--color-base-00);
+    --interactive-hover: var(--color-base-10);
+    --interactive-accent-hsl: var(--color-accent-hsl);
+    --interactive-accent: var(--color-accent-1);
+    --interactive-accent-hover: var(--color-accent-2);
+
+    color-scheme: dark;
+    --highlight-mix-blend-mode: lighten;
+    --mono-rgb-0: 0, 0, 0;
+    --mono-rgb-100: 255, 255, 255;
+    --color-red-rgb: 251, 70, 76;
+    --color-red: #fb464c;
+    --color-orange-rgb: 233, 151, 63;
+    --color-orange: #E9973F;
+    --color-yellow-rgb: 224, 222, 113;
+    --color-yellow: #E0DE71;
+    --color-green-rgb: 68, 207, 110;
+    --color-green: #44CF6E;
+    --color-cyan-rgb: 83, 223, 221;
+    --color-cyan: #53DFDD;
+    --color-blue-rgb: 2, 122, 255;
+    --color-blue: #027aff;
+    --color-purple-rgb: 168, 130, 255;
+    --color-purple: #a882ff;
+    --color-pink-rgb: 250, 153, 205;
+    --color-pink: #FA99CD;
+    --color-base-00: #1e1e1e;
+    --color-base-10: #242424;
+    --color-base-20: #262626;
+    --color-base-25: #2a2a2a;
+    --color-base-30: #363636;
+    --color-base-35: #3F3F3F;
+    --color-base-40: #555;
+    --color-base-50: #666;
+    --color-base-60: #999;
+    --color-base-70: #bababa;
+    --color-base-100: #dadada;
+    --color-accent-hsl: var(--accent-h),
+        var(--accent-s),
+        var(--accent-l);
+    --color-accent: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
+    --color-accent-1: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) - 3.8%));
+    --color-accent-2: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 3.8%));
+    --background-modifier-form-field: var(--color-base-25);
+    --background-secondary-alt: var(--color-base-30);
+    --interactive-normal: var(--color-base-30);
+    --interactive-hover: var(--color-base-35);
+    --background-modifier-box-shadow: rgba(0, 0, 0, 0.3);
+    --background-modifier-cover: rgba(10, 10, 10, 0.4);
+    --text-highlight-bg: rgba(255, 208, 0, 0.4);
+    --text-highlight-bg-active: rgba(255, 128, 0, 0.4);
+    --text-selection: hsla(var(--interactive-accent-hsl), 0.25);
+    --input-shadow: inset 0 0.5px 0.5px 0.5px rgba(255, 255, 255, 0.09),
+      0 2px 4px 0 rgba(0,0,0,.15),
+      0 1px 1.5px 0 rgba(0,0,0,.1),
+      0 1px 2px 0 rgba(0,0,0,.2),
+      0 0 0 0 transparent;
+    --input-shadow-hover: inset 0 0.5px 1px 0.5px rgba(255, 255, 255, 0.16),
+      0 2px 3px 0 rgba(0,0,0,.3),
+      0 1px 1.5px 0 rgba(0,0,0,.2),
+      0 1px 2px 0 rgba(0,0,0,.4),
+      0 0 0 0 transparent;
+    --shadow-s: 0px 1px 2px rgba(0, 0, 0, 0.121),
+      0px 3.4px 6.7px rgba(0, 0, 0, 0.179),
+      0px 15px 30px rgba(0, 0, 0, 0.3);
+    --shadow-l: 0px 1.8px 7.3px rgba(0, 0, 0, 0.071),
+      0px 6.3px 24.7px rgba(0, 0, 0, 0.112),
+      0px 30px 90px rgba(0, 0, 0, 0.2);
+
+    box-shadow: 0 0 0 100vh var(--background-primary); /*Fill the end of the last page*/
+  }
+}
+
+.print .markdown-preview-view {
+  background-color: var(--background-primary);
+  color: var(--text-normal);
+}
