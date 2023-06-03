@@ -1,4 +1,4 @@
-/* Multicolumn Notes v0.5.3
+/* Multicolumn Notes v0.5.4
    github.com/zamsyt */
 $max-columns: 6;
 
@@ -38,7 +38,7 @@ hr:has(+ hr), hr + hr {
 }
 
 /* Disable Readable line length for multi-column notes */
-.markdown-source-view:has(:is(.HyperMD-hr:not(.HyperMD-quote), .hr) + :is(.HyperMD-hr, .hr) + .cm-line:not(:last-child)),
+.markdown-source-view.is-live-preview:has(:is(.HyperMD-hr:not(.HyperMD-quote), .hr) + :is(.HyperMD-hr, .hr) + .cm-line:not(:last-child)),
 .markdown-preview-view:has(> * > .el-hr + .el-hr + :not(.mod-footer)) {
   --file-line-width: 100%;
 }
@@ -47,7 +47,7 @@ hr:has(+ hr), hr + hr {
 $hrX2: ":is(.HyperMD-hr:not(.HyperMD-quote), .hr) + :is(.HyperMD-hr, .hr)";
 $hrs: $hrX2;
 @for $i from 2 through $max-columns {
-	.cm-contentContainer > :has(#{$hrs} + .cm-line:not(:last-child)) {
+	.is-live-preview .cm-contentContainer > :has(#{$hrs} + .cm-line:not(:last-child)) {
 		column-count: $i;
 	}
 	$hrs: "#{$hrs} ~ #{$hrX2}";
