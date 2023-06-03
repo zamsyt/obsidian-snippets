@@ -1,4 +1,4 @@
-/* Force dark PDF export v0.1.0
+/* Dark PDF export v0.3.0-dev
    github.com/zamsyt */
 
 body:has(> .print) {
