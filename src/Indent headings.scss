@@ -1,4 +1,4 @@
-/* Indent headings v0.2.2
+/* Indent headings v0.3.0
    github.com/zamsyt */
 :root:root .cm-content > div, .markdown-preview-view > * > div {
   margin-left: calc(max(0, var(--heading-level) - 1) * 20px) !important;
@@ -24,8 +24,8 @@ $rv-headers: "";
 $cm-headers: "";
 @for $_ from 0 to $max-headings {
   @for $i from 1 through 6 {
-    #{$rv-headers} div:has(> h#{$i}) ~ *,
-    #{$cm-headers} .HyperMD-header-#{$i} ~ * {
+    .markdown-preview-view #{$rv-headers} div:has(> h#{$i}) ~ *,
+    .markdown-source-view #{$cm-headers} .HyperMD-header-#{$i} ~ * {
       @extend %heading-#{$i};
     }
   }
