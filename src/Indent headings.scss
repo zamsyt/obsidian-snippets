@@ -1,7 +1,15 @@
-/* Indent headings v0.3.0
+/* Indent headings v0.3.1-dev
    github.com/zamsyt */
+:root {
+  --heading-indent: 20px;
+  --heading-offset: -1;
+  --heading-offset-body: -1;
+}
 :root:root .cm-content > div, .markdown-preview-view > * > div {
-  margin-left: calc(max(0, var(--heading-level) - 1) * 20px) !important;
+  margin-left: calc(max(0, var(--heading-level) + var(--heading-offset-body)) * var(--heading-indent)) !important;
+}
+:root .cm-content > div.HyperMD-header, .markdown-preview-view > * > div:has(> [data-heading]) {
+  margin-left: calc(max(0, var(--heading-level) + var(--heading-offset)) * var(--heading-indent)) !important;
 }
 
 $max-headings: 10;
