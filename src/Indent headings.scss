@@ -1,20 +1,20 @@
-/* Indent headings v0.3.1-dev
+/* Indent headings v0.3.2-dev
    github.com/zamsyt */
 :root {
   --heading-indent: 20px;
   --heading-offset: -1;
   --heading-offset-body: -1;
 }
-:root:root .cm-content > div, .markdown-preview-view > * > div {
+:root:root .cm-content > div, .markdown-preview-view > * > div, .print .markdown-preview-view > * {
   margin-left: calc(max(0, var(--heading-level) + var(--heading-offset-body)) * var(--heading-indent)) !important;
 }
-:root .cm-content > div.HyperMD-header, .markdown-preview-view > * > div:has(> [data-heading]) {
+:root .cm-content > div.HyperMD-header, .markdown-preview-view > * > div:has(> [data-heading]), .print .markdown-preview-view > [data-heading] {
   margin-left: calc(max(0, var(--heading-level) + var(--heading-offset)) * var(--heading-indent)) !important;
 }
 
 $max-headings: 10;
 
-.markdown-embed-content {
+.markdown-embed {
   --heading-level: 0;
 }
 
@@ -23,20 +23,23 @@ $max-headings: 10;
     --heading-level: #{$i};
   }
 
-  .HyperMD-header-#{$i}, div:has(> h#{$i}) {
+  .HyperMD-header-#{$i}, .markdown-preview-view > * > div:has(> h#{$i}), .print h#{$i} {
     --heading-level: #{$i} !important;
   }
 }
 
 $rv-headers: "";
 $cm-headers: "";
+$print-headers: "";
 @for $_ from 0 to $max-headings {
   @for $i from 1 through 6 {
     .markdown-preview-view #{$rv-headers} div:has(> h#{$i}) ~ *,
-    .markdown-source-view #{$cm-headers} .HyperMD-header-#{$i} ~ * {
+    .markdown-source-view #{$cm-headers} .HyperMD-header-#{$i} ~ *,
+    .print #{$print-headers} h#{$i} ~ * {
       @extend %heading-#{$i};
     }
   }
   $rv-headers: $rv-headers + "div:has(> [data-heading]) ~";
   $cm-headers: $cm-headers + ".HyperMD-header ~";
+  $print-headers: $print-headers + "[data-heading] ~";
 }
