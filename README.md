@@ -3,6 +3,7 @@
 - [Custom page preview](../../wiki/Custom-page-preview)
 - [Dark PDF export](../../wiki/Dark-PDF-export)
 - [Easy multi-column notes](../../wiki/Easy-multi-column-notes)
+- [Folder prefix](../../wiki/Folder-prefix)
 - [Indent headings](../../wiki/Indent-headings)
 - [Note color scheme](../../wiki/Note-color-scheme)
 
