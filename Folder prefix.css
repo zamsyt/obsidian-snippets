@@ -1,0 +1,70 @@
+/* Folder prefix v0.1.0
+   github.com/zamsyt */
+:not(.mod-root) > .nav-folder-title {
+  min-height: calc(var(--nav-item-size) * var(--line-height-tight) + var(--size-4-2));
+  & > .nav-folder-title-content::first-letter {
+    font-size: 0;
+  }
+  &:has(> .nav-folder-title-content.is-being-renamed),
+  body:is(:not(.sort-prefix-hidden), .sort-prefix-show-on-hover) &:hover:has(> .nav-folder-title-content),
+  body:is(:not(.sort-prefix-hidden), .sort-prefix-show-on-active-menu) &.has-active-menu,
+  body.sort-prefix-show-on-focus .workspace-leaf.mod-active &.has-focus,
+  body.sort-prefix-always-visible & {
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-right: 0;
+
+    & > .nav-folder-title-content::first-letter {
+      font-size: unset;
+      border: var(--input-border-width) solid var(--background-modifier-border);
+      background: var(--background-modifier-form-field);
+      margin-right: 2px;
+      padding: var(--size-2-1) var(--size-2-3);
+      line-height: calc(var(--nav-item-size) * var(--line-height-tight) + var(--size-4-2));
+      border-radius: 5px;
+    }
+
+    & > .nav-folder-collapse-indicator {
+      margin-top: var(--size-4-1);
+    }
+  }
+}
+
+/* @settings
+name: Folder prefix
+id: sort-prefix
+settings:
+-
+  id: sort-prefix-info
+  description: "[Docs](https://github.com/zamsyt/obsidian-snippets/wiki/Folder-prefix)"
+  type: info-text
+  markdown: true
+-
+  id: sort-prefix-visibility
+  title: Folder prefix visibility
+  type: class-select
+  allowEmpty: false
+  default: sort-prefix-hidden
+  options:
+    - label: hidden
+      value: sort-prefix-hidden
+    - label: always visible
+      value: sort-prefix-always-visible
+-
+  id: sort-prefix-show-on-hover
+  title: Show on hover
+  type: class-toggle
+  default: true
+-
+  id: sort-prefix-show-on-active-menu
+  title: Show on right-click
+  description: Show folder prefix when right-click menu is active
+  type: class-toggle
+  default: true
+-
+  id: sort-prefix-show-on-focus
+  title: Show on focus
+  description: Show folder prefix when focused using the keyboard
+  type: class-toggle
+*/
+
