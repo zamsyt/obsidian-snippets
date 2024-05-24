@@ -1,4 +1,4 @@
-/* Folder prefix v0.1.0
+/* Folder prefix v0.1.1
    github.com/zamsyt */
 :not(.mod-root) > .nav-folder-title {
   min-height: calc(var(--nav-item-size) * var(--line-height-tight) + var(--size-4-2));
@@ -28,6 +28,13 @@
       margin-top: var(--size-4-1);
     }
   }
+}
+
+.view-header-breadcrumb::first-letter {
+  border: var(--input-border-width) solid var(--background-modifier-border);
+  margin-right: 2px;
+  padding: var(--size-2-1) var(--size-2-3);
+  border-radius: 5px;
 }
 
 /* @settings
