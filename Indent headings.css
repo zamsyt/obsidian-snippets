@@ -1,8 +1,18 @@
-/* Indent headings v0.4.3-dev
+/* Indent headings v0.4.4-dev
    github.com/zamsyt */
 
+:root {
+  --heading-indent: 20px;
+  --heading-offset: -1;
+  --heading-offset-body: -1;
+}
+
 :root:root .cm-content > div, .markdown-preview-section > div, .print .markdown-rendered > *, .callout-content > * {
-  margin-left: calc(max(var(--heading-level) - 1, 0) * 20px) !important;
+  margin-left: calc(max(var(--heading-level) + var(--heading-offset-body), 0) * var(--heading-indent)) !important;
+}
+
+:root .cm-content > div.HyperMD-header, .markdown-preview-section > div:has(> [data-heading]), .print .markdown-rendered > [data-heading], .callout-content > [data-heading] {
+  margin-left: calc(max(var(--heading-level) + var(--heading-offset), 0) * var(--heading-indent)) !important;
 }
 
 .markdown-embed > *, .callout-content {
