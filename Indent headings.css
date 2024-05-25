@@ -1,8 +1,12 @@
-/* Indent headings v0.4.1-dev
+/* Indent headings v0.4.2-dev
    github.com/zamsyt */
 
-:root:root .cm-content > div, .markdown-preview-view > * > div, .print > * > * {
+:root:root .cm-content > div, .markdown-preview-view > * > div, .print .markdown-rendered > *, .callout-content > * {
   margin-left: calc(max(var(--heading-level) - 1, 0) * 20px) !important;
+}
+
+.markdown-embed > *, .callout-content {
+  --heading-level: 0;
 }
 
 :root:root:root:root:root {
@@ -32,7 +36,7 @@
   &:has(> h6) { --heading-level: 6; }
 }
 
-:root:root:root:root .print {
+:root:root:root:root .markdown-rendered {
   & h1 { --heading-level: 1; }
   & h2 { --heading-level: 2; }
   & h3 { --heading-level: 3; }
@@ -104,7 +108,7 @@
 
 
 
-.print :nth-child(1 of [data-heading]) {
+.markdown-rendered :nth-child(1 of [data-heading]) {
                                        &:is(h1)[data-heading=""] ~ * { --heading-level: 0; }
   &:is(h1):not([data-heading=""]) ~ *, &:is(h2)[data-heading=""] ~ * { --heading-level: 1; }
   &:is(h2):not([data-heading=""]) ~ *, &:is(h3)[data-heading=""] ~ * { --heading-level: 2; }
@@ -114,7 +118,7 @@
   &:is(h6):not([data-heading=""]) ~ *                                { --heading-level: 6; }
 }
 
-.print :nth-child(2 of [data-heading]) {
+.markdown-rendered :nth-child(2 of [data-heading]) {
                                        &:is(h1)[data-heading=""] ~ * { --heading-level: 0; }
   &:is(h1):not([data-heading=""]) ~ *, &:is(h2)[data-heading=""] ~ * { --heading-level: 1; }
   &:is(h2):not([data-heading=""]) ~ *, &:is(h3)[data-heading=""] ~ * { --heading-level: 2; }
@@ -124,7 +128,7 @@
   &:is(h6):not([data-heading=""]) ~ *                                { --heading-level: 6; }
 }
 
-.print :nth-child(3 of [data-heading]) {
+.markdown-rendered :nth-child(3 of [data-heading]) {
                                        &:is(h1)[data-heading=""] ~ * { --heading-level: 0; }
   &:is(h1):not([data-heading=""]) ~ *, &:is(h2)[data-heading=""] ~ * { --heading-level: 1; }
   &:is(h2):not([data-heading=""]) ~ *, &:is(h3)[data-heading=""] ~ * { --heading-level: 2; }
@@ -134,7 +138,7 @@
   &:is(h6):not([data-heading=""]) ~ *                                { --heading-level: 6; }
 }
 
-.print :nth-child(4 of [data-heading]) {
+.markdown-rendered :nth-child(4 of [data-heading]) {
                                        &:is(h1)[data-heading=""] ~ * { --heading-level: 0; }
   &:is(h1):not([data-heading=""]) ~ *, &:is(h2)[data-heading=""] ~ * { --heading-level: 1; }
   &:is(h2):not([data-heading=""]) ~ *, &:is(h3)[data-heading=""] ~ * { --heading-level: 2; }
@@ -144,7 +148,7 @@
   &:is(h6):not([data-heading=""]) ~ *                                { --heading-level: 6; }
 }
 
-.print :nth-child(5 of [data-heading]) {
+.markdown-rendered :nth-child(5 of [data-heading]) {
                                        &:is(h1)[data-heading=""] ~ * { --heading-level: 0; }
   &:is(h1):not([data-heading=""]) ~ *, &:is(h2)[data-heading=""] ~ * { --heading-level: 1; }
   &:is(h2):not([data-heading=""]) ~ *, &:is(h3)[data-heading=""] ~ * { --heading-level: 2; }
@@ -154,7 +158,7 @@
   &:is(h6):not([data-heading=""]) ~ *                                { --heading-level: 6; }
 }
 
-.print :nth-child(6 of [data-heading]) {
+.markdown-rendered :nth-child(6 of [data-heading]) {
                                        &:is(h1)[data-heading=""] ~ * { --heading-level: 0; }
   &:is(h1):not([data-heading=""]) ~ *, &:is(h2)[data-heading=""] ~ * { --heading-level: 1; }
   &:is(h2):not([data-heading=""]) ~ *, &:is(h3)[data-heading=""] ~ * { --heading-level: 2; }
