@@ -1,7 +1,7 @@
-/* Indent headings v0.4.2-dev
+/* Indent headings v0.4.3-dev
    github.com/zamsyt */
 
-:root:root .cm-content > div, .markdown-preview-view > * > div, .print .markdown-rendered > *, .callout-content > * {
+:root:root .cm-content > div, .markdown-preview-section > div, .print .markdown-rendered > *, .callout-content > * {
   margin-left: calc(max(var(--heading-level) - 1, 0) * 20px) !important;
 }
 
@@ -9,7 +9,7 @@
   --heading-level: 0;
 }
 
-:root:root:root:root:root {
+:root:root:root:root {
   .HyperMD-header-1 { --heading-level: 1; }
   .HyperMD-header-2 { --heading-level: 2; }
   .HyperMD-header-3 { --heading-level: 3; }
@@ -18,7 +18,7 @@
   .HyperMD-header-6 { --heading-level: 6; }
 }
 
-:root:root :not(.cm-active):has(> .cm-formatting-header:last-child) {
+:root :not(.cm-active):has(> .cm-formatting-header:last-child) {
   &.HyperMD-header-1 { --heading-level: 0; }
   &.HyperMD-header-2 { --heading-level: 1; }
   &.HyperMD-header-3 { --heading-level: 2; }
@@ -27,7 +27,7 @@
   &.HyperMD-header-6 { --heading-level: 5; }
 }
 
-:root:root .markdown-preview-section > div {
+:root .markdown-preview-section > div {
   &:has(> h1) { --heading-level: 1; }
   &:has(> h2) { --heading-level: 2; }
   &:has(> h3) { --heading-level: 3; }
@@ -36,7 +36,7 @@
   &:has(> h6) { --heading-level: 6; }
 }
 
-:root:root:root:root .markdown-rendered {
+:root:root .markdown-rendered {
   & h1 { --heading-level: 1; }
   & h2 { --heading-level: 2; }
   & h3 { --heading-level: 3; }
@@ -45,125 +45,102 @@
   & h6 { --heading-level: 6; }
 }
 
-:nth-child(1 of :is(.HyperMD-header, :has(> [data-heading]))) {
-                                                  &:has(> h1[data-heading=""]) ~ *,                                                                       &.HyperMD-header-1:has(> .cm-formatting-header:last-child) ~ * { --heading-level: 0; }
-  &:has(> h1):not(:has(> [data-heading=""])) ~ *, &:has(> h2[data-heading=""]) ~ *, &.HyperMD-header-1:not(:has(> .cm-formatting-header:last-child)) ~ *, &.HyperMD-header-2:has(> .cm-formatting-header:last-child) ~ * { --heading-level: 1; }
-  &:has(> h2):not(:has(> [data-heading=""])) ~ *, &:has(> h3[data-heading=""]) ~ *, &.HyperMD-header-2:not(:has(> .cm-formatting-header:last-child)) ~ *, &.HyperMD-header-3:has(> .cm-formatting-header:last-child) ~ * { --heading-level: 2; }
-  &:has(> h3):not(:has(> [data-heading=""])) ~ *, &:has(> h4[data-heading=""]) ~ *, &.HyperMD-header-3:not(:has(> .cm-formatting-header:last-child)) ~ *, &.HyperMD-header-4:has(> .cm-formatting-header:last-child) ~ * { --heading-level: 3; }
-  &:has(> h4):not(:has(> [data-heading=""])) ~ *, &:has(> h5[data-heading=""]) ~ *, &.HyperMD-header-4:not(:has(> .cm-formatting-header:last-child)) ~ *, &.HyperMD-header-5:has(> .cm-formatting-header:last-child) ~ * { --heading-level: 4; }
-  &:has(> h5):not(:has(> [data-heading=""])) ~ *, &:has(> h6[data-heading=""]) ~ *, &.HyperMD-header-5:not(:has(> .cm-formatting-header:last-child)) ~ *, &.HyperMD-header-6:has(> .cm-formatting-header:last-child) ~ * { --heading-level: 5; }
-  &:has(> h6):not(:has(> [data-heading=""])) ~ *,                                   &.HyperMD-header-6:not(:has(> .cm-formatting-header:last-child)) ~ *                                                                 { --heading-level: 6; }
+:nth-child(1 of :where(.HyperMD-header, .markdown-preview-section > div:has(> [data-heading]), [data-heading])) {
+                                                                      &.HyperMD-header-1:has(>.cm-formatting-header:last-child)~*                                     , &:is(h1)[data-heading=""] ~ *                                              , &:has(>h1[data-heading=""])~* { --heading-level: 0; }
+  &.HyperMD-header-1:not(:has(>.cm-formatting-header:last-child))~* , &.HyperMD-header-2:has(>.cm-formatting-header:last-child)~* , &:is(h1):not([data-heading=""])~* , &:is(h2)[data-heading=""] ~ * , &:has(>h1):not(:has(>[data-heading=""]))~* , &:has(>h2[data-heading=""])~* { --heading-level: 1; }
+  &.HyperMD-header-2:not(:has(>.cm-formatting-header:last-child))~* , &.HyperMD-header-3:has(>.cm-formatting-header:last-child)~* , &:is(h2):not([data-heading=""])~* , &:is(h3)[data-heading=""] ~ * , &:has(>h2):not(:has(>[data-heading=""]))~* , &:has(>h3[data-heading=""])~* { --heading-level: 2; }
+  &.HyperMD-header-3:not(:has(>.cm-formatting-header:last-child))~* , &.HyperMD-header-4:has(>.cm-formatting-header:last-child)~* , &:is(h3):not([data-heading=""])~* , &:is(h4)[data-heading=""] ~ * , &:has(>h3):not(:has(>[data-heading=""]))~* , &:has(>h4[data-heading=""])~* { --heading-level: 3; }
+  &.HyperMD-header-4:not(:has(>.cm-formatting-header:last-child))~* , &.HyperMD-header-5:has(>.cm-formatting-header:last-child)~* , &:is(h4):not([data-heading=""])~* , &:is(h5)[data-heading=""] ~ * , &:has(>h4):not(:has(>[data-heading=""]))~* , &:has(>h5[data-heading=""])~* { --heading-level: 4; }
+  &.HyperMD-header-5:not(:has(>.cm-formatting-header:last-child))~* , &.HyperMD-header-6:has(>.cm-formatting-header:last-child)~* , &:is(h5):not([data-heading=""])~* , &:is(h6)[data-heading=""] ~ * , &:has(>h5):not(:has(>[data-heading=""]))~* , &:has(>h6[data-heading=""])~* { --heading-level: 5; }
+  &.HyperMD-header-6:not(:has(>.cm-formatting-header:last-child))~*                                                               , &:is(h6):not([data-heading=""])~*                                 , &:has(>h6):not(:has(>[data-heading=""]))~*                                 { --heading-level: 6; }
 }
 
-
-:nth-child(2 of :is(.HyperMD-header, :has(> [data-heading]))) {
-                                                  &:has(> h1[data-heading=""]) ~ *,                                                                       &.HyperMD-header-1:has(> .cm-formatting-header:last-child) ~ * { --heading-level: 0; }
-  &:has(> h1):not(:has(> [data-heading=""])) ~ *, &:has(> h2[data-heading=""]) ~ *, &.HyperMD-header-1:not(:has(> .cm-formatting-header:last-child)) ~ *, &.HyperMD-header-2:has(> .cm-formatting-header:last-child) ~ * { --heading-level: 1; }
-  &:has(> h2):not(:has(> [data-heading=""])) ~ *, &:has(> h3[data-heading=""]) ~ *, &.HyperMD-header-2:not(:has(> .cm-formatting-header:last-child)) ~ *, &.HyperMD-header-3:has(> .cm-formatting-header:last-child) ~ * { --heading-level: 2; }
-  &:has(> h3):not(:has(> [data-heading=""])) ~ *, &:has(> h4[data-heading=""]) ~ *, &.HyperMD-header-3:not(:has(> .cm-formatting-header:last-child)) ~ *, &.HyperMD-header-4:has(> .cm-formatting-header:last-child) ~ * { --heading-level: 3; }
-  &:has(> h4):not(:has(> [data-heading=""])) ~ *, &:has(> h5[data-heading=""]) ~ *, &.HyperMD-header-4:not(:has(> .cm-formatting-header:last-child)) ~ *, &.HyperMD-header-5:has(> .cm-formatting-header:last-child) ~ * { --heading-level: 4; }
-  &:has(> h5):not(:has(> [data-heading=""])) ~ *, &:has(> h6[data-heading=""]) ~ *, &.HyperMD-header-5:not(:has(> .cm-formatting-header:last-child)) ~ *, &.HyperMD-header-6:has(> .cm-formatting-header:last-child) ~ * { --heading-level: 5; }
-  &:has(> h6):not(:has(> [data-heading=""])) ~ *,                                   &.HyperMD-header-6:not(:has(> .cm-formatting-header:last-child)) ~ *                                                                 { --heading-level: 6; }
+:nth-child(2 of :where(.HyperMD-header, .markdown-preview-section > div:has(> [data-heading]), [data-heading])) {
+                                                                      &.HyperMD-header-1:has(>.cm-formatting-header:last-child)~*                                     , &:is(h1)[data-heading=""] ~ *                                              , &:has(>h1[data-heading=""])~* { --heading-level: 0; }
+  &.HyperMD-header-1:not(:has(>.cm-formatting-header:last-child))~* , &.HyperMD-header-2:has(>.cm-formatting-header:last-child)~* , &:is(h1):not([data-heading=""])~* , &:is(h2)[data-heading=""] ~ * , &:has(>h1):not(:has(>[data-heading=""]))~* , &:has(>h2[data-heading=""])~* { --heading-level: 1; }
+  &.HyperMD-header-2:not(:has(>.cm-formatting-header:last-child))~* , &.HyperMD-header-3:has(>.cm-formatting-header:last-child)~* , &:is(h2):not([data-heading=""])~* , &:is(h3)[data-heading=""] ~ * , &:has(>h2):not(:has(>[data-heading=""]))~* , &:has(>h3[data-heading=""])~* { --heading-level: 2; }
+  &.HyperMD-header-3:not(:has(>.cm-formatting-header:last-child))~* , &.HyperMD-header-4:has(>.cm-formatting-header:last-child)~* , &:is(h3):not([data-heading=""])~* , &:is(h4)[data-heading=""] ~ * , &:has(>h3):not(:has(>[data-heading=""]))~* , &:has(>h4[data-heading=""])~* { --heading-level: 3; }
+  &.HyperMD-header-4:not(:has(>.cm-formatting-header:last-child))~* , &.HyperMD-header-5:has(>.cm-formatting-header:last-child)~* , &:is(h4):not([data-heading=""])~* , &:is(h5)[data-heading=""] ~ * , &:has(>h4):not(:has(>[data-heading=""]))~* , &:has(>h5[data-heading=""])~* { --heading-level: 4; }
+  &.HyperMD-header-5:not(:has(>.cm-formatting-header:last-child))~* , &.HyperMD-header-6:has(>.cm-formatting-header:last-child)~* , &:is(h5):not([data-heading=""])~* , &:is(h6)[data-heading=""] ~ * , &:has(>h5):not(:has(>[data-heading=""]))~* , &:has(>h6[data-heading=""])~* { --heading-level: 5; }
+  &.HyperMD-header-6:not(:has(>.cm-formatting-header:last-child))~*                                                               , &:is(h6):not([data-heading=""])~*                                 , &:has(>h6):not(:has(>[data-heading=""]))~*                                 { --heading-level: 6; }
 }
 
-:nth-child(3 of :is(.HyperMD-header, :has(> [data-heading]))) {
-                                                  &:has(> h1[data-heading=""]) ~ *,                                                                       &.HyperMD-header-1:has(> .cm-formatting-header:last-child) ~ * { --heading-level: 0; }
-  &:has(> h1):not(:has(> [data-heading=""])) ~ *, &:has(> h2[data-heading=""]) ~ *, &.HyperMD-header-1:not(:has(> .cm-formatting-header:last-child)) ~ *, &.HyperMD-header-2:has(> .cm-formatting-header:last-child) ~ * { --heading-level: 1; }
-  &:has(> h2):not(:has(> [data-heading=""])) ~ *, &:has(> h3[data-heading=""]) ~ *, &.HyperMD-header-2:not(:has(> .cm-formatting-header:last-child)) ~ *, &.HyperMD-header-3:has(> .cm-formatting-header:last-child) ~ * { --heading-level: 2; }
-  &:has(> h3):not(:has(> [data-heading=""])) ~ *, &:has(> h4[data-heading=""]) ~ *, &.HyperMD-header-3:not(:has(> .cm-formatting-header:last-child)) ~ *, &.HyperMD-header-4:has(> .cm-formatting-header:last-child) ~ * { --heading-level: 3; }
-  &:has(> h4):not(:has(> [data-heading=""])) ~ *, &:has(> h5[data-heading=""]) ~ *, &.HyperMD-header-4:not(:has(> .cm-formatting-header:last-child)) ~ *, &.HyperMD-header-5:has(> .cm-formatting-header:last-child) ~ * { --heading-level: 4; }
-  &:has(> h5):not(:has(> [data-heading=""])) ~ *, &:has(> h6[data-heading=""]) ~ *, &.HyperMD-header-5:not(:has(> .cm-formatting-header:last-child)) ~ *, &.HyperMD-header-6:has(> .cm-formatting-header:last-child) ~ * { --heading-level: 5; }
-  &:has(> h6):not(:has(> [data-heading=""])) ~ *,                                   &.HyperMD-header-6:not(:has(> .cm-formatting-header:last-child)) ~ *                                                                 { --heading-level: 6; }
+:nth-child(3 of :where(.HyperMD-header, .markdown-preview-section > div:has(> [data-heading]), [data-heading])) {
+                                                                      &.HyperMD-header-1:has(>.cm-formatting-header:last-child)~*                                     , &:is(h1)[data-heading=""] ~ *                                              , &:has(>h1[data-heading=""])~* { --heading-level: 0; }
+  &.HyperMD-header-1:not(:has(>.cm-formatting-header:last-child))~* , &.HyperMD-header-2:has(>.cm-formatting-header:last-child)~* , &:is(h1):not([data-heading=""])~* , &:is(h2)[data-heading=""] ~ * , &:has(>h1):not(:has(>[data-heading=""]))~* , &:has(>h2[data-heading=""])~* { --heading-level: 1; }
+  &.HyperMD-header-2:not(:has(>.cm-formatting-header:last-child))~* , &.HyperMD-header-3:has(>.cm-formatting-header:last-child)~* , &:is(h2):not([data-heading=""])~* , &:is(h3)[data-heading=""] ~ * , &:has(>h2):not(:has(>[data-heading=""]))~* , &:has(>h3[data-heading=""])~* { --heading-level: 2; }
+  &.HyperMD-header-3:not(:has(>.cm-formatting-header:last-child))~* , &.HyperMD-header-4:has(>.cm-formatting-header:last-child)~* , &:is(h3):not([data-heading=""])~* , &:is(h4)[data-heading=""] ~ * , &:has(>h3):not(:has(>[data-heading=""]))~* , &:has(>h4[data-heading=""])~* { --heading-level: 3; }
+  &.HyperMD-header-4:not(:has(>.cm-formatting-header:last-child))~* , &.HyperMD-header-5:has(>.cm-formatting-header:last-child)~* , &:is(h4):not([data-heading=""])~* , &:is(h5)[data-heading=""] ~ * , &:has(>h4):not(:has(>[data-heading=""]))~* , &:has(>h5[data-heading=""])~* { --heading-level: 4; }
+  &.HyperMD-header-5:not(:has(>.cm-formatting-header:last-child))~* , &.HyperMD-header-6:has(>.cm-formatting-header:last-child)~* , &:is(h5):not([data-heading=""])~* , &:is(h6)[data-heading=""] ~ * , &:has(>h5):not(:has(>[data-heading=""]))~* , &:has(>h6[data-heading=""])~* { --heading-level: 5; }
+  &.HyperMD-header-6:not(:has(>.cm-formatting-header:last-child))~*                                                               , &:is(h6):not([data-heading=""])~*                                 , &:has(>h6):not(:has(>[data-heading=""]))~*                                 { --heading-level: 6; }
 }
 
-:nth-child(4 of :is(.HyperMD-header, :has(> [data-heading]))) {
-                                                  &:has(> h1[data-heading=""]) ~ *,                                                                       &.HyperMD-header-1:has(> .cm-formatting-header:last-child) ~ * { --heading-level: 0; }
-  &:has(> h1):not(:has(> [data-heading=""])) ~ *, &:has(> h2[data-heading=""]) ~ *, &.HyperMD-header-1:not(:has(> .cm-formatting-header:last-child)) ~ *, &.HyperMD-header-2:has(> .cm-formatting-header:last-child) ~ * { --heading-level: 1; }
-  &:has(> h2):not(:has(> [data-heading=""])) ~ *, &:has(> h3[data-heading=""]) ~ *, &.HyperMD-header-2:not(:has(> .cm-formatting-header:last-child)) ~ *, &.HyperMD-header-3:has(> .cm-formatting-header:last-child) ~ * { --heading-level: 2; }
-  &:has(> h3):not(:has(> [data-heading=""])) ~ *, &:has(> h4[data-heading=""]) ~ *, &.HyperMD-header-3:not(:has(> .cm-formatting-header:last-child)) ~ *, &.HyperMD-header-4:has(> .cm-formatting-header:last-child) ~ * { --heading-level: 3; }
-  &:has(> h4):not(:has(> [data-heading=""])) ~ *, &:has(> h5[data-heading=""]) ~ *, &.HyperMD-header-4:not(:has(> .cm-formatting-header:last-child)) ~ *, &.HyperMD-header-5:has(> .cm-formatting-header:last-child) ~ * { --heading-level: 4; }
-  &:has(> h5):not(:has(> [data-heading=""])) ~ *, &:has(> h6[data-heading=""]) ~ *, &.HyperMD-header-5:not(:has(> .cm-formatting-header:last-child)) ~ *, &.HyperMD-header-6:has(> .cm-formatting-header:last-child) ~ * { --heading-level: 5; }
-  &:has(> h6):not(:has(> [data-heading=""])) ~ *,                                   &.HyperMD-header-6:not(:has(> .cm-formatting-header:last-child)) ~ *                                                                 { --heading-level: 6; }
+:nth-child(4 of :where(.HyperMD-header, .markdown-preview-section > div:has(> [data-heading]), [data-heading])) {
+                                                                      &.HyperMD-header-1:has(>.cm-formatting-header:last-child)~*                                     , &:is(h1)[data-heading=""] ~ *                                              , &:has(>h1[data-heading=""])~* { --heading-level: 0; }
+  &.HyperMD-header-1:not(:has(>.cm-formatting-header:last-child))~* , &.HyperMD-header-2:has(>.cm-formatting-header:last-child)~* , &:is(h1):not([data-heading=""])~* , &:is(h2)[data-heading=""] ~ * , &:has(>h1):not(:has(>[data-heading=""]))~* , &:has(>h2[data-heading=""])~* { --heading-level: 1; }
+  &.HyperMD-header-2:not(:has(>.cm-formatting-header:last-child))~* , &.HyperMD-header-3:has(>.cm-formatting-header:last-child)~* , &:is(h2):not([data-heading=""])~* , &:is(h3)[data-heading=""] ~ * , &:has(>h2):not(:has(>[data-heading=""]))~* , &:has(>h3[data-heading=""])~* { --heading-level: 2; }
+  &.HyperMD-header-3:not(:has(>.cm-formatting-header:last-child))~* , &.HyperMD-header-4:has(>.cm-formatting-header:last-child)~* , &:is(h3):not([data-heading=""])~* , &:is(h4)[data-heading=""] ~ * , &:has(>h3):not(:has(>[data-heading=""]))~* , &:has(>h4[data-heading=""])~* { --heading-level: 3; }
+  &.HyperMD-header-4:not(:has(>.cm-formatting-header:last-child))~* , &.HyperMD-header-5:has(>.cm-formatting-header:last-child)~* , &:is(h4):not([data-heading=""])~* , &:is(h5)[data-heading=""] ~ * , &:has(>h4):not(:has(>[data-heading=""]))~* , &:has(>h5[data-heading=""])~* { --heading-level: 4; }
+  &.HyperMD-header-5:not(:has(>.cm-formatting-header:last-child))~* , &.HyperMD-header-6:has(>.cm-formatting-header:last-child)~* , &:is(h5):not([data-heading=""])~* , &:is(h6)[data-heading=""] ~ * , &:has(>h5):not(:has(>[data-heading=""]))~* , &:has(>h6[data-heading=""])~* { --heading-level: 5; }
+  &.HyperMD-header-6:not(:has(>.cm-formatting-header:last-child))~*                                                               , &:is(h6):not([data-heading=""])~*                                 , &:has(>h6):not(:has(>[data-heading=""]))~*                                 { --heading-level: 6; }
 }
 
-:nth-child(5 of :is(.HyperMD-header, :has(> [data-heading]))) {
-                                                  &:has(> h1[data-heading=""]) ~ *,                                                                       &.HyperMD-header-1:has(> .cm-formatting-header:last-child) ~ * { --heading-level: 0; }
-  &:has(> h1):not(:has(> [data-heading=""])) ~ *, &:has(> h2[data-heading=""]) ~ *, &.HyperMD-header-1:not(:has(> .cm-formatting-header:last-child)) ~ *, &.HyperMD-header-2:has(> .cm-formatting-header:last-child) ~ * { --heading-level: 1; }
-  &:has(> h2):not(:has(> [data-heading=""])) ~ *, &:has(> h3[data-heading=""]) ~ *, &.HyperMD-header-2:not(:has(> .cm-formatting-header:last-child)) ~ *, &.HyperMD-header-3:has(> .cm-formatting-header:last-child) ~ * { --heading-level: 2; }
-  &:has(> h3):not(:has(> [data-heading=""])) ~ *, &:has(> h4[data-heading=""]) ~ *, &.HyperMD-header-3:not(:has(> .cm-formatting-header:last-child)) ~ *, &.HyperMD-header-4:has(> .cm-formatting-header:last-child) ~ * { --heading-level: 3; }
-  &:has(> h4):not(:has(> [data-heading=""])) ~ *, &:has(> h5[data-heading=""]) ~ *, &.HyperMD-header-4:not(:has(> .cm-formatting-header:last-child)) ~ *, &.HyperMD-header-5:has(> .cm-formatting-header:last-child) ~ * { --heading-level: 4; }
-  &:has(> h5):not(:has(> [data-heading=""])) ~ *, &:has(> h6[data-heading=""]) ~ *, &.HyperMD-header-5:not(:has(> .cm-formatting-header:last-child)) ~ *, &.HyperMD-header-6:has(> .cm-formatting-header:last-child) ~ * { --heading-level: 5; }
-  &:has(> h6):not(:has(> [data-heading=""])) ~ *,                                   &.HyperMD-header-6:not(:has(> .cm-formatting-header:last-child)) ~ *                                                                 { --heading-level: 6; }
+:nth-child(5 of :where(.HyperMD-header, .markdown-preview-section > div:has(> [data-heading]), [data-heading])) {
+                                                                      &.HyperMD-header-1:has(>.cm-formatting-header:last-child)~*                                     , &:is(h1)[data-heading=""] ~ *                                              , &:has(>h1[data-heading=""])~* { --heading-level: 0; }
+  &.HyperMD-header-1:not(:has(>.cm-formatting-header:last-child))~* , &.HyperMD-header-2:has(>.cm-formatting-header:last-child)~* , &:is(h1):not([data-heading=""])~* , &:is(h2)[data-heading=""] ~ * , &:has(>h1):not(:has(>[data-heading=""]))~* , &:has(>h2[data-heading=""])~* { --heading-level: 1; }
+  &.HyperMD-header-2:not(:has(>.cm-formatting-header:last-child))~* , &.HyperMD-header-3:has(>.cm-formatting-header:last-child)~* , &:is(h2):not([data-heading=""])~* , &:is(h3)[data-heading=""] ~ * , &:has(>h2):not(:has(>[data-heading=""]))~* , &:has(>h3[data-heading=""])~* { --heading-level: 2; }
+  &.HyperMD-header-3:not(:has(>.cm-formatting-header:last-child))~* , &.HyperMD-header-4:has(>.cm-formatting-header:last-child)~* , &:is(h3):not([data-heading=""])~* , &:is(h4)[data-heading=""] ~ * , &:has(>h3):not(:has(>[data-heading=""]))~* , &:has(>h4[data-heading=""])~* { --heading-level: 3; }
+  &.HyperMD-header-4:not(:has(>.cm-formatting-header:last-child))~* , &.HyperMD-header-5:has(>.cm-formatting-header:last-child)~* , &:is(h4):not([data-heading=""])~* , &:is(h5)[data-heading=""] ~ * , &:has(>h4):not(:has(>[data-heading=""]))~* , &:has(>h5[data-heading=""])~* { --heading-level: 4; }
+  &.HyperMD-header-5:not(:has(>.cm-formatting-header:last-child))~* , &.HyperMD-header-6:has(>.cm-formatting-header:last-child)~* , &:is(h5):not([data-heading=""])~* , &:is(h6)[data-heading=""] ~ * , &:has(>h5):not(:has(>[data-heading=""]))~* , &:has(>h6[data-heading=""])~* { --heading-level: 5; }
+  &.HyperMD-header-6:not(:has(>.cm-formatting-header:last-child))~*                                                               , &:is(h6):not([data-heading=""])~*                                 , &:has(>h6):not(:has(>[data-heading=""]))~*                                 { --heading-level: 6; }
 }
 
-:nth-child(6 of :is(.HyperMD-header, :has(> [data-heading]))) {
-                                                  &:has(> h1[data-heading=""]) ~ *,                                                                       &.HyperMD-header-1:has(> .cm-formatting-header:last-child) ~ * { --heading-level: 0; }
-  &:has(> h1):not(:has(> [data-heading=""])) ~ *, &:has(> h2[data-heading=""]) ~ *, &.HyperMD-header-1:not(:has(> .cm-formatting-header:last-child)) ~ *, &.HyperMD-header-2:has(> .cm-formatting-header:last-child) ~ * { --heading-level: 1; }
-  &:has(> h2):not(:has(> [data-heading=""])) ~ *, &:has(> h3[data-heading=""]) ~ *, &.HyperMD-header-2:not(:has(> .cm-formatting-header:last-child)) ~ *, &.HyperMD-header-3:has(> .cm-formatting-header:last-child) ~ * { --heading-level: 2; }
-  &:has(> h3):not(:has(> [data-heading=""])) ~ *, &:has(> h4[data-heading=""]) ~ *, &.HyperMD-header-3:not(:has(> .cm-formatting-header:last-child)) ~ *, &.HyperMD-header-4:has(> .cm-formatting-header:last-child) ~ * { --heading-level: 3; }
-  &:has(> h4):not(:has(> [data-heading=""])) ~ *, &:has(> h5[data-heading=""]) ~ *, &.HyperMD-header-4:not(:has(> .cm-formatting-header:last-child)) ~ *, &.HyperMD-header-5:has(> .cm-formatting-header:last-child) ~ * { --heading-level: 4; }
-  &:has(> h5):not(:has(> [data-heading=""])) ~ *, &:has(> h6[data-heading=""]) ~ *, &.HyperMD-header-5:not(:has(> .cm-formatting-header:last-child)) ~ *, &.HyperMD-header-6:has(> .cm-formatting-header:last-child) ~ * { --heading-level: 5; }
-  &:has(> h6):not(:has(> [data-heading=""])) ~ *,                                   &.HyperMD-header-6:not(:has(> .cm-formatting-header:last-child)) ~ *                                                                 { --heading-level: 6; }
+:nth-child(6 of :where(.HyperMD-header, .markdown-preview-section > div:has(> [data-heading]), [data-heading])) {
+                                                                      &.HyperMD-header-1:has(>.cm-formatting-header:last-child)~*                                     , &:is(h1)[data-heading=""] ~ *                                              , &:has(>h1[data-heading=""])~* { --heading-level: 0; }
+  &.HyperMD-header-1:not(:has(>.cm-formatting-header:last-child))~* , &.HyperMD-header-2:has(>.cm-formatting-header:last-child)~* , &:is(h1):not([data-heading=""])~* , &:is(h2)[data-heading=""] ~ * , &:has(>h1):not(:has(>[data-heading=""]))~* , &:has(>h2[data-heading=""])~* { --heading-level: 1; }
+  &.HyperMD-header-2:not(:has(>.cm-formatting-header:last-child))~* , &.HyperMD-header-3:has(>.cm-formatting-header:last-child)~* , &:is(h2):not([data-heading=""])~* , &:is(h3)[data-heading=""] ~ * , &:has(>h2):not(:has(>[data-heading=""]))~* , &:has(>h3[data-heading=""])~* { --heading-level: 2; }
+  &.HyperMD-header-3:not(:has(>.cm-formatting-header:last-child))~* , &.HyperMD-header-4:has(>.cm-formatting-header:last-child)~* , &:is(h3):not([data-heading=""])~* , &:is(h4)[data-heading=""] ~ * , &:has(>h3):not(:has(>[data-heading=""]))~* , &:has(>h4[data-heading=""])~* { --heading-level: 3; }
+  &.HyperMD-header-4:not(:has(>.cm-formatting-header:last-child))~* , &.HyperMD-header-5:has(>.cm-formatting-header:last-child)~* , &:is(h4):not([data-heading=""])~* , &:is(h5)[data-heading=""] ~ * , &:has(>h4):not(:has(>[data-heading=""]))~* , &:has(>h5[data-heading=""])~* { --heading-level: 4; }
+  &.HyperMD-header-5:not(:has(>.cm-formatting-header:last-child))~* , &.HyperMD-header-6:has(>.cm-formatting-header:last-child)~* , &:is(h5):not([data-heading=""])~* , &:is(h6)[data-heading=""] ~ * , &:has(>h5):not(:has(>[data-heading=""]))~* , &:has(>h6[data-heading=""])~* { --heading-level: 5; }
+  &.HyperMD-header-6:not(:has(>.cm-formatting-header:last-child))~*                                                               , &:is(h6):not([data-heading=""])~*                                 , &:has(>h6):not(:has(>[data-heading=""]))~*                                 { --heading-level: 6; }
 }
 
-
-
-.markdown-rendered :nth-child(1 of [data-heading]) {
-                                       &:is(h1)[data-heading=""] ~ * { --heading-level: 0; }
-  &:is(h1):not([data-heading=""]) ~ *, &:is(h2)[data-heading=""] ~ * { --heading-level: 1; }
-  &:is(h2):not([data-heading=""]) ~ *, &:is(h3)[data-heading=""] ~ * { --heading-level: 2; }
-  &:is(h3):not([data-heading=""]) ~ *, &:is(h4)[data-heading=""] ~ * { --heading-level: 3; }
-  &:is(h4):not([data-heading=""]) ~ *, &:is(h5)[data-heading=""] ~ * { --heading-level: 4; }
-  &:is(h5):not([data-heading=""]) ~ *, &:is(h6)[data-heading=""] ~ * { --heading-level: 5; }
-  &:is(h6):not([data-heading=""]) ~ *                                { --heading-level: 6; }
+:nth-child(7 of :where(.HyperMD-header, .markdown-preview-section > div:has(> [data-heading]), [data-heading])) {
+                                                                      &.HyperMD-header-1:has(>.cm-formatting-header:last-child)~*                                     , &:is(h1)[data-heading=""] ~ *                                              , &:has(>h1[data-heading=""])~* { --heading-level: 0; }
+  &.HyperMD-header-1:not(:has(>.cm-formatting-header:last-child))~* , &.HyperMD-header-2:has(>.cm-formatting-header:last-child)~* , &:is(h1):not([data-heading=""])~* , &:is(h2)[data-heading=""] ~ * , &:has(>h1):not(:has(>[data-heading=""]))~* , &:has(>h2[data-heading=""])~* { --heading-level: 1; }
+  &.HyperMD-header-2:not(:has(>.cm-formatting-header:last-child))~* , &.HyperMD-header-3:has(>.cm-formatting-header:last-child)~* , &:is(h2):not([data-heading=""])~* , &:is(h3)[data-heading=""] ~ * , &:has(>h2):not(:has(>[data-heading=""]))~* , &:has(>h3[data-heading=""])~* { --heading-level: 2; }
+  &.HyperMD-header-3:not(:has(>.cm-formatting-header:last-child))~* , &.HyperMD-header-4:has(>.cm-formatting-header:last-child)~* , &:is(h3):not([data-heading=""])~* , &:is(h4)[data-heading=""] ~ * , &:has(>h3):not(:has(>[data-heading=""]))~* , &:has(>h4[data-heading=""])~* { --heading-level: 3; }
+  &.HyperMD-header-4:not(:has(>.cm-formatting-header:last-child))~* , &.HyperMD-header-5:has(>.cm-formatting-header:last-child)~* , &:is(h4):not([data-heading=""])~* , &:is(h5)[data-heading=""] ~ * , &:has(>h4):not(:has(>[data-heading=""]))~* , &:has(>h5[data-heading=""])~* { --heading-level: 4; }
+  &.HyperMD-header-5:not(:has(>.cm-formatting-header:last-child))~* , &.HyperMD-header-6:has(>.cm-formatting-header:last-child)~* , &:is(h5):not([data-heading=""])~* , &:is(h6)[data-heading=""] ~ * , &:has(>h5):not(:has(>[data-heading=""]))~* , &:has(>h6[data-heading=""])~* { --heading-level: 5; }
+  &.HyperMD-header-6:not(:has(>.cm-formatting-header:last-child))~*                                                               , &:is(h6):not([data-heading=""])~*                                 , &:has(>h6):not(:has(>[data-heading=""]))~*                                 { --heading-level: 6; }
 }
 
-.markdown-rendered :nth-child(2 of [data-heading]) {
-                                       &:is(h1)[data-heading=""] ~ * { --heading-level: 0; }
-  &:is(h1):not([data-heading=""]) ~ *, &:is(h2)[data-heading=""] ~ * { --heading-level: 1; }
-  &:is(h2):not([data-heading=""]) ~ *, &:is(h3)[data-heading=""] ~ * { --heading-level: 2; }
-  &:is(h3):not([data-heading=""]) ~ *, &:is(h4)[data-heading=""] ~ * { --heading-level: 3; }
-  &:is(h4):not([data-heading=""]) ~ *, &:is(h5)[data-heading=""] ~ * { --heading-level: 4; }
-  &:is(h5):not([data-heading=""]) ~ *, &:is(h6)[data-heading=""] ~ * { --heading-level: 5; }
-  &:is(h6):not([data-heading=""]) ~ *                                { --heading-level: 6; }
+:nth-child(8 of :where(.HyperMD-header, .markdown-preview-section > div:has(> [data-heading]), [data-heading])) {
+                                                                      &.HyperMD-header-1:has(>.cm-formatting-header:last-child)~*                                     , &:is(h1)[data-heading=""] ~ *                                              , &:has(>h1[data-heading=""])~* { --heading-level: 0; }
+  &.HyperMD-header-1:not(:has(>.cm-formatting-header:last-child))~* , &.HyperMD-header-2:has(>.cm-formatting-header:last-child)~* , &:is(h1):not([data-heading=""])~* , &:is(h2)[data-heading=""] ~ * , &:has(>h1):not(:has(>[data-heading=""]))~* , &:has(>h2[data-heading=""])~* { --heading-level: 1; }
+  &.HyperMD-header-2:not(:has(>.cm-formatting-header:last-child))~* , &.HyperMD-header-3:has(>.cm-formatting-header:last-child)~* , &:is(h2):not([data-heading=""])~* , &:is(h3)[data-heading=""] ~ * , &:has(>h2):not(:has(>[data-heading=""]))~* , &:has(>h3[data-heading=""])~* { --heading-level: 2; }
+  &.HyperMD-header-3:not(:has(>.cm-formatting-header:last-child))~* , &.HyperMD-header-4:has(>.cm-formatting-header:last-child)~* , &:is(h3):not([data-heading=""])~* , &:is(h4)[data-heading=""] ~ * , &:has(>h3):not(:has(>[data-heading=""]))~* , &:has(>h4[data-heading=""])~* { --heading-level: 3; }
+  &.HyperMD-header-4:not(:has(>.cm-formatting-header:last-child))~* , &.HyperMD-header-5:has(>.cm-formatting-header:last-child)~* , &:is(h4):not([data-heading=""])~* , &:is(h5)[data-heading=""] ~ * , &:has(>h4):not(:has(>[data-heading=""]))~* , &:has(>h5[data-heading=""])~* { --heading-level: 4; }
+  &.HyperMD-header-5:not(:has(>.cm-formatting-header:last-child))~* , &.HyperMD-header-6:has(>.cm-formatting-header:last-child)~* , &:is(h5):not([data-heading=""])~* , &:is(h6)[data-heading=""] ~ * , &:has(>h5):not(:has(>[data-heading=""]))~* , &:has(>h6[data-heading=""])~* { --heading-level: 5; }
+  &.HyperMD-header-6:not(:has(>.cm-formatting-header:last-child))~*                                                               , &:is(h6):not([data-heading=""])~*                                 , &:has(>h6):not(:has(>[data-heading=""]))~*                                 { --heading-level: 6; }
 }
 
-.markdown-rendered :nth-child(3 of [data-heading]) {
-                                       &:is(h1)[data-heading=""] ~ * { --heading-level: 0; }
-  &:is(h1):not([data-heading=""]) ~ *, &:is(h2)[data-heading=""] ~ * { --heading-level: 1; }
-  &:is(h2):not([data-heading=""]) ~ *, &:is(h3)[data-heading=""] ~ * { --heading-level: 2; }
-  &:is(h3):not([data-heading=""]) ~ *, &:is(h4)[data-heading=""] ~ * { --heading-level: 3; }
-  &:is(h4):not([data-heading=""]) ~ *, &:is(h5)[data-heading=""] ~ * { --heading-level: 4; }
-  &:is(h5):not([data-heading=""]) ~ *, &:is(h6)[data-heading=""] ~ * { --heading-level: 5; }
-  &:is(h6):not([data-heading=""]) ~ *                                { --heading-level: 6; }
+:nth-child(9 of :where(.HyperMD-header, .markdown-preview-section > div:has(> [data-heading]), [data-heading])) {
+                                                                      &.HyperMD-header-1:has(>.cm-formatting-header:last-child)~*                                     , &:is(h1)[data-heading=""] ~ *                                              , &:has(>h1[data-heading=""])~* { --heading-level: 0; }
+  &.HyperMD-header-1:not(:has(>.cm-formatting-header:last-child))~* , &.HyperMD-header-2:has(>.cm-formatting-header:last-child)~* , &:is(h1):not([data-heading=""])~* , &:is(h2)[data-heading=""] ~ * , &:has(>h1):not(:has(>[data-heading=""]))~* , &:has(>h2[data-heading=""])~* { --heading-level: 1; }
+  &.HyperMD-header-2:not(:has(>.cm-formatting-header:last-child))~* , &.HyperMD-header-3:has(>.cm-formatting-header:last-child)~* , &:is(h2):not([data-heading=""])~* , &:is(h3)[data-heading=""] ~ * , &:has(>h2):not(:has(>[data-heading=""]))~* , &:has(>h3[data-heading=""])~* { --heading-level: 2; }
+  &.HyperMD-header-3:not(:has(>.cm-formatting-header:last-child))~* , &.HyperMD-header-4:has(>.cm-formatting-header:last-child)~* , &:is(h3):not([data-heading=""])~* , &:is(h4)[data-heading=""] ~ * , &:has(>h3):not(:has(>[data-heading=""]))~* , &:has(>h4[data-heading=""])~* { --heading-level: 3; }
+  &.HyperMD-header-4:not(:has(>.cm-formatting-header:last-child))~* , &.HyperMD-header-5:has(>.cm-formatting-header:last-child)~* , &:is(h4):not([data-heading=""])~* , &:is(h5)[data-heading=""] ~ * , &:has(>h4):not(:has(>[data-heading=""]))~* , &:has(>h5[data-heading=""])~* { --heading-level: 4; }
+  &.HyperMD-header-5:not(:has(>.cm-formatting-header:last-child))~* , &.HyperMD-header-6:has(>.cm-formatting-header:last-child)~* , &:is(h5):not([data-heading=""])~* , &:is(h6)[data-heading=""] ~ * , &:has(>h5):not(:has(>[data-heading=""]))~* , &:has(>h6[data-heading=""])~* { --heading-level: 5; }
+  &.HyperMD-header-6:not(:has(>.cm-formatting-header:last-child))~*                                                               , &:is(h6):not([data-heading=""])~*                                 , &:has(>h6):not(:has(>[data-heading=""]))~*                                 { --heading-level: 6; }
 }
 
-.markdown-rendered :nth-child(4 of [data-heading]) {
-                                       &:is(h1)[data-heading=""] ~ * { --heading-level: 0; }
-  &:is(h1):not([data-heading=""]) ~ *, &:is(h2)[data-heading=""] ~ * { --heading-level: 1; }
-  &:is(h2):not([data-heading=""]) ~ *, &:is(h3)[data-heading=""] ~ * { --heading-level: 2; }
-  &:is(h3):not([data-heading=""]) ~ *, &:is(h4)[data-heading=""] ~ * { --heading-level: 3; }
-  &:is(h4):not([data-heading=""]) ~ *, &:is(h5)[data-heading=""] ~ * { --heading-level: 4; }
-  &:is(h5):not([data-heading=""]) ~ *, &:is(h6)[data-heading=""] ~ * { --heading-level: 5; }
-  &:is(h6):not([data-heading=""]) ~ *                                { --heading-level: 6; }
-}
-
-.markdown-rendered :nth-child(5 of [data-heading]) {
-                                       &:is(h1)[data-heading=""] ~ * { --heading-level: 0; }
-  &:is(h1):not([data-heading=""]) ~ *, &:is(h2)[data-heading=""] ~ * { --heading-level: 1; }
-  &:is(h2):not([data-heading=""]) ~ *, &:is(h3)[data-heading=""] ~ * { --heading-level: 2; }
-  &:is(h3):not([data-heading=""]) ~ *, &:is(h4)[data-heading=""] ~ * { --heading-level: 3; }
-  &:is(h4):not([data-heading=""]) ~ *, &:is(h5)[data-heading=""] ~ * { --heading-level: 4; }
-  &:is(h5):not([data-heading=""]) ~ *, &:is(h6)[data-heading=""] ~ * { --heading-level: 5; }
-  &:is(h6):not([data-heading=""]) ~ *                                { --heading-level: 6; }
-}
-
-.markdown-rendered :nth-child(6 of [data-heading]) {
-                                       &:is(h1)[data-heading=""] ~ * { --heading-level: 0; }
-  &:is(h1):not([data-heading=""]) ~ *, &:is(h2)[data-heading=""] ~ * { --heading-level: 1; }
-  &:is(h2):not([data-heading=""]) ~ *, &:is(h3)[data-heading=""] ~ * { --heading-level: 2; }
-  &:is(h3):not([data-heading=""]) ~ *, &:is(h4)[data-heading=""] ~ * { --heading-level: 3; }
-  &:is(h4):not([data-heading=""]) ~ *, &:is(h5)[data-heading=""] ~ * { --heading-level: 4; }
-  &:is(h5):not([data-heading=""]) ~ *, &:is(h6)[data-heading=""] ~ * { --heading-level: 5; }
-  &:is(h6):not([data-heading=""]) ~ *                                { --heading-level: 6; }
+:nth-child(10 of :where(.HyperMD-header, .markdown-preview-section > div:has(> [data-heading]), [data-heading])) {
+                                                                      &.HyperMD-header-1:has(>.cm-formatting-header:last-child)~*                                     , &:is(h1)[data-heading=""] ~ *                                              , &:has(>h1[data-heading=""])~* { --heading-level: 0; }
+  &.HyperMD-header-1:not(:has(>.cm-formatting-header:last-child))~* , &.HyperMD-header-2:has(>.cm-formatting-header:last-child)~* , &:is(h1):not([data-heading=""])~* , &:is(h2)[data-heading=""] ~ * , &:has(>h1):not(:has(>[data-heading=""]))~* , &:has(>h2[data-heading=""])~* { --heading-level: 1; }
+  &.HyperMD-header-2:not(:has(>.cm-formatting-header:last-child))~* , &.HyperMD-header-3:has(>.cm-formatting-header:last-child)~* , &:is(h2):not([data-heading=""])~* , &:is(h3)[data-heading=""] ~ * , &:has(>h2):not(:has(>[data-heading=""]))~* , &:has(>h3[data-heading=""])~* { --heading-level: 2; }
+  &.HyperMD-header-3:not(:has(>.cm-formatting-header:last-child))~* , &.HyperMD-header-4:has(>.cm-formatting-header:last-child)~* , &:is(h3):not([data-heading=""])~* , &:is(h4)[data-heading=""] ~ * , &:has(>h3):not(:has(>[data-heading=""]))~* , &:has(>h4[data-heading=""])~* { --heading-level: 3; }
+  &.HyperMD-header-4:not(:has(>.cm-formatting-header:last-child))~* , &.HyperMD-header-5:has(>.cm-formatting-header:last-child)~* , &:is(h4):not([data-heading=""])~* , &:is(h5)[data-heading=""] ~ * , &:has(>h4):not(:has(>[data-heading=""]))~* , &:has(>h5[data-heading=""])~* { --heading-level: 4; }
+  &.HyperMD-header-5:not(:has(>.cm-formatting-header:last-child))~* , &.HyperMD-header-6:has(>.cm-formatting-header:last-child)~* , &:is(h5):not([data-heading=""])~* , &:is(h6)[data-heading=""] ~ * , &:has(>h5):not(:has(>[data-heading=""]))~* , &:has(>h6[data-heading=""])~* { --heading-level: 5; }
+  &.HyperMD-header-6:not(:has(>.cm-formatting-header:last-child))~*                                                               , &:is(h6):not([data-heading=""])~*                                 , &:has(>h6):not(:has(>[data-heading=""]))~*                                 { --heading-level: 6; }
 }
