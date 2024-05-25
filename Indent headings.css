@@ -1,7 +1,7 @@
-/* Indent headings v0.4.0-dev
+/* Indent headings v0.4.1-dev
    github.com/zamsyt */
 
-:root:root .cm-content > div, .markdown-preview-view > * > div {
+:root:root .cm-content > div, .markdown-preview-view > * > div, .print > * > * {
   margin-left: calc(max(var(--heading-level) - 1, 0) * 20px) !important;
 }
 
@@ -30,6 +30,15 @@
   &:has(> h4) { --heading-level: 4; }
   &:has(> h5) { --heading-level: 5; }
   &:has(> h6) { --heading-level: 6; }
+}
+
+:root:root:root:root .print {
+  & h1 { --heading-level: 1; }
+  & h2 { --heading-level: 2; }
+  & h3 { --heading-level: 3; }
+  & h4 { --heading-level: 4; }
+  & h5 { --heading-level: 5; }
+  & h6 { --heading-level: 6; }
 }
 
 :nth-child(1 of :is(.HyperMD-header, :has(> [data-heading]))) {
@@ -91,4 +100,66 @@
   &:has(> h4):not(:has(> [data-heading=""])) ~ *, &:has(> h5[data-heading=""]) ~ *, &.HyperMD-header-4:not(:has(> .cm-formatting-header:last-child)) ~ *, &.HyperMD-header-5:has(> .cm-formatting-header:last-child) ~ * { --heading-level: 4; }
   &:has(> h5):not(:has(> [data-heading=""])) ~ *, &:has(> h6[data-heading=""]) ~ *, &.HyperMD-header-5:not(:has(> .cm-formatting-header:last-child)) ~ *, &.HyperMD-header-6:has(> .cm-formatting-header:last-child) ~ * { --heading-level: 5; }
   &:has(> h6):not(:has(> [data-heading=""])) ~ *,                                   &.HyperMD-header-6:not(:has(> .cm-formatting-header:last-child)) ~ *                                                                 { --heading-level: 6; }
+}
+
+
+
+.print :nth-child(1 of [data-heading]) {
+                                       &:is(h1)[data-heading=""] ~ * { --heading-level: 0; }
+  &:is(h1):not([data-heading=""]) ~ *, &:is(h2)[data-heading=""] ~ * { --heading-level: 1; }
+  &:is(h2):not([data-heading=""]) ~ *, &:is(h3)[data-heading=""] ~ * { --heading-level: 2; }
+  &:is(h3):not([data-heading=""]) ~ *, &:is(h4)[data-heading=""] ~ * { --heading-level: 3; }
+  &:is(h4):not([data-heading=""]) ~ *, &:is(h5)[data-heading=""] ~ * { --heading-level: 4; }
+  &:is(h5):not([data-heading=""]) ~ *, &:is(h6)[data-heading=""] ~ * { --heading-level: 5; }
+  &:is(h6):not([data-heading=""]) ~ *                                { --heading-level: 6; }
+}
+
+.print :nth-child(2 of [data-heading]) {
+                                       &:is(h1)[data-heading=""] ~ * { --heading-level: 0; }
+  &:is(h1):not([data-heading=""]) ~ *, &:is(h2)[data-heading=""] ~ * { --heading-level: 1; }
+  &:is(h2):not([data-heading=""]) ~ *, &:is(h3)[data-heading=""] ~ * { --heading-level: 2; }
+  &:is(h3):not([data-heading=""]) ~ *, &:is(h4)[data-heading=""] ~ * { --heading-level: 3; }
+  &:is(h4):not([data-heading=""]) ~ *, &:is(h5)[data-heading=""] ~ * { --heading-level: 4; }
+  &:is(h5):not([data-heading=""]) ~ *, &:is(h6)[data-heading=""] ~ * { --heading-level: 5; }
+  &:is(h6):not([data-heading=""]) ~ *                                { --heading-level: 6; }
+}
+
+.print :nth-child(3 of [data-heading]) {
+                                       &:is(h1)[data-heading=""] ~ * { --heading-level: 0; }
+  &:is(h1):not([data-heading=""]) ~ *, &:is(h2)[data-heading=""] ~ * { --heading-level: 1; }
+  &:is(h2):not([data-heading=""]) ~ *, &:is(h3)[data-heading=""] ~ * { --heading-level: 2; }
+  &:is(h3):not([data-heading=""]) ~ *, &:is(h4)[data-heading=""] ~ * { --heading-level: 3; }
+  &:is(h4):not([data-heading=""]) ~ *, &:is(h5)[data-heading=""] ~ * { --heading-level: 4; }
+  &:is(h5):not([data-heading=""]) ~ *, &:is(h6)[data-heading=""] ~ * { --heading-level: 5; }
+  &:is(h6):not([data-heading=""]) ~ *                                { --heading-level: 6; }
+}
+
+.print :nth-child(4 of [data-heading]) {
+                                       &:is(h1)[data-heading=""] ~ * { --heading-level: 0; }
+  &:is(h1):not([data-heading=""]) ~ *, &:is(h2)[data-heading=""] ~ * { --heading-level: 1; }
+  &:is(h2):not([data-heading=""]) ~ *, &:is(h3)[data-heading=""] ~ * { --heading-level: 2; }
+  &:is(h3):not([data-heading=""]) ~ *, &:is(h4)[data-heading=""] ~ * { --heading-level: 3; }
+  &:is(h4):not([data-heading=""]) ~ *, &:is(h5)[data-heading=""] ~ * { --heading-level: 4; }
+  &:is(h5):not([data-heading=""]) ~ *, &:is(h6)[data-heading=""] ~ * { --heading-level: 5; }
+  &:is(h6):not([data-heading=""]) ~ *                                { --heading-level: 6; }
+}
+
+.print :nth-child(5 of [data-heading]) {
+                                       &:is(h1)[data-heading=""] ~ * { --heading-level: 0; }
+  &:is(h1):not([data-heading=""]) ~ *, &:is(h2)[data-heading=""] ~ * { --heading-level: 1; }
+  &:is(h2):not([data-heading=""]) ~ *, &:is(h3)[data-heading=""] ~ * { --heading-level: 2; }
+  &:is(h3):not([data-heading=""]) ~ *, &:is(h4)[data-heading=""] ~ * { --heading-level: 3; }
+  &:is(h4):not([data-heading=""]) ~ *, &:is(h5)[data-heading=""] ~ * { --heading-level: 4; }
+  &:is(h5):not([data-heading=""]) ~ *, &:is(h6)[data-heading=""] ~ * { --heading-level: 5; }
+  &:is(h6):not([data-heading=""]) ~ *                                { --heading-level: 6; }
+}
+
+.print :nth-child(6 of [data-heading]) {
+                                       &:is(h1)[data-heading=""] ~ * { --heading-level: 0; }
+  &:is(h1):not([data-heading=""]) ~ *, &:is(h2)[data-heading=""] ~ * { --heading-level: 1; }
+  &:is(h2):not([data-heading=""]) ~ *, &:is(h3)[data-heading=""] ~ * { --heading-level: 2; }
+  &:is(h3):not([data-heading=""]) ~ *, &:is(h4)[data-heading=""] ~ * { --heading-level: 3; }
+  &:is(h4):not([data-heading=""]) ~ *, &:is(h5)[data-heading=""] ~ * { --heading-level: 4; }
+  &:is(h5):not([data-heading=""]) ~ *, &:is(h6)[data-heading=""] ~ * { --heading-level: 5; }
+  &:is(h6):not([data-heading=""]) ~ *                                { --heading-level: 6; }
 }
